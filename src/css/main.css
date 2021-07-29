@@ -1,0 +1,47 @@
+/* home page css */
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+    background-color: black;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    margin: 0;
+    padding: 0;
+}
+.kv-container{
+    width: 100vw;
+    height: 55vw;
+    background-image: url("../images/home-kv-img.jpg");
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../images/home-kv-img.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+}
+.kv-container b{
+    color:#eb05a2;
+}
+.kv-container h1{
+    font-size: 1em;
+    font-weight: normal;
+    font-family: 'Josefin Sans', cursive;
+}
+.kv-container h1:nth-of-type(2){
+    padding-bottom: 5rem;
+}
