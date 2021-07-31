@@ -11,9 +11,13 @@ p{
     margin: 0;
     padding: 0;
 }
-h1{
+h1 h2 h3 h4 h5 h6{
     margin: 0;
     padding: 0;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 .kv-container{
     width: 100vw;
@@ -44,4 +48,52 @@ h1{
 }
 .kv-container h1:nth-of-type(2){
     padding-bottom: 5rem;
+}
+
+.kv-slider{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 100px
+}
+
+.bottom-info{
+    display: flex;
+margin: 0 auto;
+justify-content: space-between;
+max-width: 900px;    
+}
+.bottom-info-box{
+    display: flex;
+    flex-direction: column;
+}
+.bottom-info-box h3{
+    color: #eb05a2;
+    padding: 0;
+    margin: 0;
+}
+.bottom-info-box span{
+    color: #c627e6;
+    line-height: 1.5em;
+    font-size: 16px;
+}
+.bottom-info-box p {
+    color: #eb05a2;
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    align-items: center;
+    max-width: 900px;
+}
+footer img{
+    max-width: 300px;
+    max-height: 105px;
+    width: 100%;
+    height: auto;
 }

@@ -11,7 +11,7 @@ const Nav = () => {
                     <div className="header-kv-img-container">
                         <section>
                             <aside>
-                                <Link><span><img src={Logo} alt="Retro Zone Image" /></span></Link>
+                                <Link to="/"><span><img src={Logo} alt="Retro Zone Image" /></span></Link>
                             </aside>
                     
                         </section>
