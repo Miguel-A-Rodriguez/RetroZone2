@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Logo from "../images/Logo.png";
 
+// iframes used for facebook feeds and shopping cart
 const Nav = () => {
     return (
             <header>

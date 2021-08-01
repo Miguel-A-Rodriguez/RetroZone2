@@ -1,13 +1,9 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
+import SimpleImageSlider from "react-simple-image-slider";
 import "../src/css/main.css";
 import "../src/css/nav.css";
+import Footer from "./components/Footer";
 import Nav from "./components/Nav";
-import SimpleImageSlider from "react-simple-image-slider";
-import { Link } from "react-router-dom";
-import Logo from "../src/images/Logo.png";
-import { faEnvelope, faFacebook, faInstagramsquare } from '@fortawesome/fontawesome-free-solid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 const Home = () => {
 
 const images = [
@@ -27,7 +23,17 @@ const images = [
   { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/IMG_20210228_190103090_1616189161.jpg?width=2000" },
 ];
 
+  const [slideIndexText, setSlideIndexText] = useState('');
 
+  const onStartSlide = useCallback((idx, length) => {
+    console.log(`[App onStartSlide] ${idx}/${length}`);
+    setSlideIndexText(`${idx} / ${length}`);
+  }, []);
+
+  const onCompleteSlide = useCallback((idx, length) => {
+    console.log(`[App onCompleteSlide] ${idx}/${length}`);
+    setSlideIndexText(`${idx} / ${length}`);
+  }, []);
     return (
         <body>
            <Nav/>
@@ -48,6 +54,9 @@ const images = [
                 navSize={40}
                 showNavs={true}
                 navMargin={1}
+                slideDuration={1}
+                onStartSlide={onStartSlide}
+                onCompleteSlide={onCompleteSlide}
                 />
             </section>
 
@@ -61,7 +70,9 @@ const images = [
                     <span>Fort Myers. FL 339O1. US</span>
                     <span>239-266-4605</span>
                     <span>retrozonefortmyers@gmail.com</span>
-                    <p>Get Directions</p>
+                    <a href="https://www.google.com/maps/dir/38.2888051,140.8830369/3577+Fowler+St,+Fort+Myers,+FL+33901,+USA/@1.9745919,122.6192387,3z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x88db6a7e01624bc1:0x5ee4df6274ddf468!2m2!1d-81.8610022!2d26.6111705">
+                        <p>Get Directions</p>
+                    </a>
                 </div>
                 <div className="bottom-info-box">
                     <span>Monday Closed</span>
@@ -73,15 +84,7 @@ const images = [
                     <span>Sunday 12:00pm - 5:00pm</span>
                 </div>
             </section>
-         <footer>
-             <div> <Link to="/"><span><img src={Logo}alt="Retro Zone Image" /></span></Link> </div>
-                <div className=""><span>Copyright 2021</span></div>
-                <div className="social-media-links">
-                <span> <FontAwesomeIcon icon={faEnvelope} /> </span>
-                {/* <span> <FontAwesomeIcon icon={faFacebook} /> </span> */}
-                {/* <span> <FontAwesomeIcon icon={faInstagramsquare} /> </span> */}
-                </div>
-          </footer>
+         <Footer/>
         </body>
     )
 }
