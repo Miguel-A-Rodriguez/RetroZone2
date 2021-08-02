@@ -1,6 +1,7 @@
 /* home page css */
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
-
+/* @import "~slick-carousel/slick/slick-theme.css";
+@import "~slick-carousel/slick/slick.css"; */
 a{
     text-decoration: none;
 }
@@ -54,10 +55,16 @@ h1 h2 h3 h4 h5 h6{
 }
 
 .kv-slider{
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
+    max-width: 1100px;
+    max-height: 1000px;
     margin-top: 30px;
-    margin-bottom: 100px
+    margin-bottom: 100px;
+}
+
+.kv-slider img{
+    max-height: 900px;
+    max-width: 1100px;
 }
 
 .bottom-info{

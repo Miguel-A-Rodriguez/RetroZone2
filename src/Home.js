@@ -1,39 +1,60 @@
-import React, { useCallback, useState } from 'react';
-import SimpleImageSlider from "react-simple-image-slider";
+import React from 'react';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+// import SimpleImageSlider from "react-simple-image-slider";
 import "../src/css/main.css";
 import "../src/css/nav.css";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 const Home = () => {
 
-const images = [
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/2021-03-19_17-32-59_1616189610.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210108_012738288.MP_1616189224.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/2021-03-19_17-35-09_1616189742.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/IMG_20210313_175206460_1616189161.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210102_234441242_1616189228.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210110_181815826_1616189220.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210102_230257642.MP_1616189217.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210102_175309581_1616189170.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/FB_IMG_1611160416360_1616189137.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210102_225432077.MP_1616189215.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/received_251609366525312_1616189143.jpeg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/2021-03-19_17-39-59_1616190026.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210131_225238925_1616016391.jpg?width=2000" },
-  { url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/IMG_20210228_190103090_1616189161.jpg?width=2000" },
+const photos = [
+  { name: 'photo 1',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/2021-03-19_17-32-59_1616189610.jpg?width=2000" },
+  { name: 'photo 2',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210108_012738288.MP_1616189224.jpg?width=2000" },
+  { name: 'photo 3',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/2021-03-19_17-35-09_1616189742.jpg?width=2000" },
+  { name: 'photo 4',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/IMG_20210313_175206460_1616189161.jpg?width=2000" },
+  { name: 'photo 5',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210102_234441242_1616189228.jpg?width=2000" },
+  { name: 'photo 6',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210110_181815826_1616189220.jpg?width=2000" },
+  { name: 'photo 7',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210102_230257642.MP_1616189217.jpg?width=2000" },
+  { name: 'photo 8',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210102_175309581_1616189170.jpg?width=2000" },
+  { name: 'photo 9',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/FB_IMG_1611160416360_1616189137.jpg?width=2000" },
+  { name: 'photo 10',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210102_225432077.MP_1616189215.jpg?width=2000" },
+  { name: 'photo 11',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/received_251609366525312_1616189143.jpeg?width=2000" },
+  { name: 'photo 12',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/2021-03-19_17-39-59_1616190026.jpg?width=2000" },
+  { name: 'photo 13',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/PXL_20210131_225238925_1616016391.jpg?width=2000" },
+  { name: 'photo 14',
+    url: "https://www.theretrozonearcade.com/uploads/b/de71f1d13baa43ee6fde38ca756164d2ed27eaf0cf7c37ece92cb3a76b98a972/IMG_20210228_190103090_1616189161.jpg?width=2000" },
 ];
 
-  const [slideIndexText, setSlideIndexText] = useState('');
 
-  const onStartSlide = useCallback((idx, length) => {
-    console.log(`[App onStartSlide] ${idx}/${length}`);
-    setSlideIndexText(`${idx} / ${length}`);
-  }, []);
-
-  const onCompleteSlide = useCallback((idx, length) => {
-    console.log(`[App onCompleteSlide] ${idx}/${length}`);
-    setSlideIndexText(`${idx} / ${length}`);
-  }, []);
+const settings = {
+  dots: true,
+  fade: true,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  cssEase: "linear",
+  pauseOnHover: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 14,
+  arrows: true,
+  slidesToScroll: 1,
+  className: "slides"
+};
     return (
         <body>
            <Nav/>
@@ -44,21 +65,19 @@ const images = [
             <h1>Beer <b>-</b> Wine <b>-</b> Nostalgia</h1>
             </section>
 
-            <section className="kv-slider">
-               <SimpleImageSlider
-                width={896}
-                height={504}
-                images={images}
-                showBullets={true}
-                startIndex={0}
-                navSize={40}
-                showNavs={true}
-                navMargin={1}
-                slideDuration={1}
-                onStartSlide={onStartSlide}
-                onCompleteSlide={onCompleteSlide}
-                />
-            </section>
+      <section className="kv-slider">
+  
+          <Slider {...settings}>
+            {photos.map((photo) => {
+              return(
+                <div>
+                  <img width="100%" src={photo.url}/>
+                </div>
+                )
+            })}
+          </Slider>
+       </section>
+            
 
            <section className="bottom-info">
       
