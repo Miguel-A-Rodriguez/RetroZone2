@@ -59,7 +59,7 @@ h1 h2 h3 h4 h5 h6{
     max-width: 1100px;
     max-height: 1000px;
     margin-top: 30px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .kv-slider img{
@@ -109,4 +109,67 @@ footer img{
     max-height: 70px;
     width: 100%;
     height: auto;
+}
+
+/* pricing page */
+.pricing-kv-container{
+    display: flex;
+    justify-content: left;
+    width: 100vw;
+    height: 40vw;
+    background-image: url("../images/pricing-kv-img.jpg");
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../images/pricing-kv-img.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    font-size: 6em;
+    color: #eb05a2;
+}
+.pricing-kv-container span{
+padding-left: 130px;
+padding-bottom: 70px;
+  align-self: flex-end;
+  white-space: pre-line;
+}
+
+.pricing-main-txt-container{
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.pricing-kv-txt{
+    color: #eb05a2;
+    text-transform: uppercase;
+    text-align: center;
+}
+.pricing-kv-txt h3{
+    font-size: 2em;
+}
+.pricing-main-txt-container h4{
+    color: #c627e6;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+.pricing-main-txt-container p{
+    color: white;
+ font-size: 1.5em;
+}
+.pricing-txt-bottom{
+    max-width: 900px;
+    display: flex;
+    margin: 0 auto;
+    font-size: 1em;
+}
+.pricing-txt-bottom div{
+    display: flex;
+    justify-content: space-around;
+}
+.pricing-txt-bottom span{
+    color: #eb05a2;
+}
+.pricing-txt-bottom p{
+    color: #c627e6;
 }
