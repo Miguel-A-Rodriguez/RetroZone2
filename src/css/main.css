@@ -10,6 +10,7 @@ body {
     color: white;
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
 }
 p{
     margin: 0;
@@ -147,6 +148,7 @@ padding-bottom: 70px;
 }
 .pricing-kv-txt h3{
     font-size: 2em;
+    margin: 10px 0;
 }
 .pricing-main-txt-container h4{
     color: #c627e6;
@@ -158,18 +160,31 @@ padding-bottom: 70px;
  font-size: 1.5em;
 }
 .pricing-txt-bottom{
-    max-width: 900px;
+    max-width: 1000px;
     display: flex;
     margin: 0 auto;
     font-size: 1em;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
 }
 .pricing-txt-bottom div{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .pricing-txt-bottom span{
     color: #eb05a2;
+    font-size: 38px;
 }
 .pricing-txt-bottom p{
     color: #c627e6;
+    font-size: 19px;
+}
+
+.social-media-links{
+    display: flex;
+    justify-content: space-evenly;
+}
+.social-media-links div, span{
+    margin: 0 5px;
 }
