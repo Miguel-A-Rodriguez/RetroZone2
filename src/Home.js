@@ -89,7 +89,7 @@ const settings = {
                     <span>Fort Myers. FL 339O1. US</span>
                     <span>239-266-4605</span>
                     <span>retrozonefortmyers@gmail.com</span>
-                    <a href="https://www.google.com/maps/dir/38.2888051,140.8830369/3577+Fowler+St,+Fort+Myers,+FL+33901,+USA/@1.9745919,122.6192387,3z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x88db6a7e01624bc1:0x5ee4df6274ddf468!2m2!1d-81.8610022!2d26.6111705">
+                    <a href="https://www.google.com/maps/dir/38.2888051,140.8830369/3577+Fowler+St,+Fort+Myers,+FL+33901,+USA/@1.9745919,122.6192387,3z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x88db6a7e01624bc1:0x5ee4df6274ddf468!2m2!1d-81.8610022!2d26.6111705" target="_blank">
                         <p>Get Directions</p>
                     </a>
                 </div>

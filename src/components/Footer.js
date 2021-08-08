@@ -34,9 +34,16 @@ const Footer = () => {
                
            <span onClick={notify}> <FontAwesomeIcon icon={faEnvelope} /> </span>
 
-           <IconStylecolor> <FontAwesomeIcon icon={faFacebook} /> </IconStylecolor>
+           
+           <a href="https://www.facebook.com/retrozonearcade/" target="_blank">
+               <IconStylecolor> <FontAwesomeIcon icon={faFacebook} /> </IconStylecolor>
+           </a>
 
-           <div style={{backgroundColor: "white", borderRadius: "10%", display: "flex", width:"12px", height: "14px", justifyContent: "center", alignItems: "center", marginTop: "2px"}}> <FontAwesomeIcon style={{color: "rgb(233, 89, 80)", fontSize: "100%"}} icon={faInstagramSquare} /> </div>
+           <a href="https://www.instagram.com/theretrozonearcade/" target="_blank">
+               <div>
+                    <FontAwesomeIcon icon={faInstagramSquare}/>
+               </div>
+           </a>
         </div>
      </footer>
 )

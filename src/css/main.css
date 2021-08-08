@@ -24,6 +24,10 @@ h1 h2 h3 h4 h5 h6{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
+ul{
+    margin: 0;
+    padding: 0;
+}
 .kv-container{
     width: 100vw;
     height: 55vw;
@@ -100,7 +104,7 @@ footer{
     justify-content: space-between;
     margin-top: 100px;
     align-items: center;
-    max-width: 900px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
@@ -160,7 +164,7 @@ padding-bottom: 70px;
  font-size: 1.5em;
 }
 .pricing-txt-bottom{
-    max-width: 1000px;
+    max-width: 900px;
     display: flex;
     margin: 0 auto;
     font-size: 1em;
@@ -175,15 +179,99 @@ padding-bottom: 70px;
 .pricing-txt-bottom span{
     color: #eb05a2;
     font-size: 38px;
+    word-break: break-word;
+    max-width: 10ch;
 }
 .pricing-txt-bottom p{
     color: #c627e6;
     font-size: 19px;
+    word-break: break-word;
+    max-width: 74ch;
 }
 
+.party-kv-container{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+.party-kv-img{
+    width: 50vw;
+    height: 40vw;
+    background-image: url("../images/party-kv-img.jpg");
+    background-position: 25% 40%;
+    -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}
+.party-kv-container span{
+    margin-top: 25px;
+    display: flex;
+    color: #eb05a2;
+    font-size: 3.5em;
+    word-break: break-word;
+    max-width: 15ch;
+    text-transform: uppercase;
+    margin-left: 2.5rem;
+}
+.party-txt-header{
+    text-align: center;
+    font-size: 24px;
+    max-width: 650px;
+    margin: 40px auto;
+}
+.party-txt-header span{
+    color: #c627e6;
+}
+.party-txt-header p{
+    margin-top: 30px;
+    margin-bottom: 8rem;
+}
+.party-txt{
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.party-txt ul{
+    font-size: 18px;
+    line-height: 30px;
+}
+.party-txt ul li:nth-of-type(5){
+    margin-top: 25px;
+}
+.party-txt span{
+    text-transform: uppercase;
+    color: #c627e6;
+    word-break: break-word;
+    max-width: 10ch;
+    font-size: 35px;
+}
+
+
+/* footer social media */
 .social-media-links{
     display: flex;
     justify-content: space-evenly;
+}
+.social-media-links div{
+    background-color: white; 
+    border-radius: 10%; 
+    display: flex; 
+    width:12px; 
+    height: 14px; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 2px;
+}
+.social-media-links div svg{
+    color: rgb(233, 89, 80);
+    font-size: 100%;
 }
 .social-media-links div, span{
     margin: 0 5px;
