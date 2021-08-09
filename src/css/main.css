@@ -104,10 +104,11 @@ footer{
     justify-content: space-between;
     margin-top: 100px;
     align-items: center;
-    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
+    padding-right: 150px;
+    padding-left: 100px;
 }
 footer img{
     max-width: 200px;
@@ -275,4 +276,141 @@ padding-bottom: 70px;
 }
 .social-media-links div, span{
     margin: 0 5px;
+}
+
+/* drinks page css */
+.drinks-kv-container{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.drinks-kv-container span{
+    margin-top: 25px;
+    display: flex;
+    color: #eb05a2;
+    font-size: 80px;
+    word-break: break-word;
+    max-width: 15ch;
+    text-transform: uppercase;
+    margin-left: 2.5rem;
+}
+.drinks-kv-img{
+    width: 50vw;
+    height: 40vw;
+    background-image: url("../images/drinks-kv-img.jpg");
+    background-position: 25% 40%;
+    -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}
+
+.drink-txt-box{
+    margin: 0 auto;
+    margin-top: 30px;
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  max-width: 900px;
+  text-align: center;
+}
+
+
+.drinks-txt span{
+    color:#eb05a2;
+    font-size: 31px;
+    font-weight: 400;
+    
+}
+.drinks-txt p{
+    color: white;
+    font-size: 19px;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+/* events page css */
+.events-kv-container{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.events-kv-container span{
+    margin-top: 25px;
+    display: flex;
+    color: #eb05a2;
+    font-size: 55px;
+    word-break: break-word;
+    max-width: 20ch;
+    text-transform: uppercase;
+    margin-left: 2.5rem;
+}
+.events-kv-img{
+    width: 50vw;
+    height: 40vw;
+    background-image: url("../images/events-kv-img.jpg");
+    background-position: 50% 30%;
+    -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}
+.events-txt-box{
+    margin: 0 auto;
+    margin-top: 30px;
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr ;
+  grid-gap: 20px;
+  max-width: 900px;
+  text-align: center;
+}
+
+
+.events-txt span{
+    color:#c627e6;
+    font-size: 31px;
+    font-weight: 400;
+    
+}
+.events-txt p{
+    color: white;
+    font-size: 19px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-left: 5px;
+}
+.facebook-conent-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.bottom-event-txt{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 150px;
+}
+.bottom-event-txt h1{
+    color: #eb05a2;
+}
+.bottom-event-txt h2{
+    color:#c627e6;
+    font-size: 19px;
+    font-weight: 400;
+
 }
