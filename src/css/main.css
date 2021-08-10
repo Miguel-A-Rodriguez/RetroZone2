@@ -414,3 +414,118 @@ padding-bottom: 70px;
     font-weight: 400;
 
 }
+
+/* about us page */
+.about-kv-container{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 35px;
+
+}
+.about-title-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.about-title-container span:nth-of-type(1){
+    color: #c627e6;
+    margin: 0 auto;
+    font-size: 75px;
+
+}
+.about-title-container span:nth-of-type(2){
+    color: #eb05a2;
+    margin: 0 auto;
+    font-size: 75px;
+
+}
+.about-kv-container span{
+    margin-top: 25px;
+    display: flex;
+    color: #eb05a2;
+    font-size: 55px;
+    text-transform: uppercase;
+    margin-left: 2.5rem;
+    
+}
+.about-kv-img{
+    width: 50vw;
+    height: 40vw;
+    background-image: url("../images/about-kv-img.jpg");
+    background-position: 50% 30%;
+    -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}
+
+.about-txt{
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 30px auto;
+}
+.about-txt span{
+    color: #c627e6;
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0px 0px;
+    text-align: center;
+}
+.about-txt p{
+    color: white;
+    word-break: break-word;
+    max-width: 60ch;
+    font-size: 19px;
+    font-weight: 400;
+    padding: 10px 0px;
+}
+.about-txt-flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.about-txt-flex-column p:nth-of-type(2){
+    margin-top: 10px;
+}
+
+.about-txt-bottom-kv{
+    display: flex;
+    max-width: 75vw;
+    margin: 0 auto;
+    margin-top: 150px;
+    justify-content: space-between;
+}
+.nelsons-story-container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+}
+.nelsons-story-container span{
+    color: #eb05a2;
+    font-size: 31px;
+}
+.nelsons-story-container p{
+    margin: 20px 0;
+    word-break: break-word;
+    max-width: 45ch;
+    font-size: 19px;
+    line-height: 27px;
+}
+.about-bottom-txt-kv-img-container{
+    width: 35vw;
+    height: 55vw;
+    background-image: url("../images/about-bottom-kv-img.jpg");
+    background-position: 50% 30%;
+    -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}

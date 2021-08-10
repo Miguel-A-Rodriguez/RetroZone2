@@ -81,7 +81,7 @@ const Events = () => {
                     data-tabs="timeline"
                     data-href="https://www.facebook.com/retrozonearcade/">
             </div> */}
-            <div class="fb-page" data-href="https://www.facebook.com/retrozonearcade/" data-tabs="timeline" data-width="500" data-height="500" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
+            <div class="fb-page" data-href="https://www.facebook.com/retrozonearcade/" data-tabs="timeline" data-width="500" data-height="800" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
             </section>
             <Footer/>
         </body>
