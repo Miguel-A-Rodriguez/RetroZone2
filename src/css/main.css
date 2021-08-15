@@ -578,6 +578,7 @@ padding-bottom: 70px;
 .gift-cards-container .background-color-container{
     background-color: #556b7c;
     color: white;
+    margin-bottom: 5rem;
 }
 
 .background-color-container{
@@ -593,6 +594,7 @@ padding-bottom: 70px;
    }
 .background-color-container p{
     font-size: 18px;
+    margin-top: 1rem;
 }
 .gift-card-img-container{
     max-width: 320px;
@@ -613,4 +615,144 @@ padding-bottom: 70px;
     margin: 0;
     position: relative;
     top: 40px;
+}
+/* form css */
+.payment-container{
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.payment-container h2{
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: .65px;
+    color: #43494f;
+    margin-top: 20px;
+}
+.payment-container .price-buttons{
+    font-size: 15px;
+    font-stretch: 100%;
+    border: 1px solid rgb(213, 217, 220);
+    border-radius: 5px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.payment-container .price-buttons span{
+    height: 30px;
+    padding: 0px 25px;
+    padding-left: auto;
+    padding-right: auto;
+    padding-top: 10px;
+    border-right: 1px rgb(213, 217, 220) solid;
+    color: #64696E;
+    font-weight: bold;
+}
+
+.price-buttons span:nth-child(5){
+    border: none;
+}
+.payment-container input{
+    height: 30px;
+    border: 1px rgb(213, 217, 220) solid;
+    margin-bottom: 5px;
+}
+
+.user-form-flexbox{
+    display: flex;
+    justify-content: space-between;
+}
+.user-form-flexbox article{
+    width: 49%;
+    
+}
+.user-form-flexbox article input{
+    width: 96%;
+    height: 30px;
+}
+
+.checkbox-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: auto;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin-top: 10px;
+}
+.checkbox-container input {
+    height: 24px;
+    width: 24px;
+}
+.checkbox-container span {
+    line-height: 20px;
+}
+
+.recipient-form-flexbox{
+    display: flex;
+    justify-content: space-between;
+}
+.recipient-form-flexbox aside{
+    width: 49%;
+    
+}
+.recipient-form-flexbox aside input{
+    width: 96%;
+    height: 30px;
+}
+
+.payment-container textarea {
+    border: 1px rgb(195, 198, 201) solid;
+}
+.payment-container .personal-msg-txt u{
+    color: rgb(195, 198, 201);
+    text-decoration: none;
+}
+
+.delivery-buttons-flexbox{
+    display: flex;
+    align-items: center;
+}
+.delivery-buttons-flexbox aside{
+    width: 50%;
+    text-align: center;
+    
+}
+.delivery-buttons-flexbox aside div{
+    height: 30px;
+    padding-top: 15px;
+    border-radius: 2px;
+    border: 1px solid rgb(213, 217, 220);
+    font-size: 14px;
+    font-weight: bold;
+}
+.delivery-buttons-flexbox aside div:hover{
+    cursor: pointer;
+}
+.delivery-buttons-flexbox .delivery-active{
+    background-color: #32373c;
+    color: white;
+}
+
+.checkout-button{
+    width: 100%;
+    height: 30px;
+    padding-top: 15px;
+    margin-top: 15px;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    background-color: #2996cc;
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.checkout-button:hover{
+    cursor: pointer;
 }

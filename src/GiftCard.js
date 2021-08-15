@@ -75,6 +75,63 @@ export default function GiftCard() {
                 <div className="gift-card-img-container"></div>
             </div>
 
+            <div className="payment-container">
+              <h2>EGIFT CARD AMOUNT</h2>
+              <section className="price-buttons">
+                <span>$20</span>
+                <span>$40</span>
+                <span>$60</span>
+                <span>$80</span>
+                <span>CUSTOM</span>
+              </section>
+
+              <h2>PROMOTION CODE</h2>
+              <input type="text" placeholder="   MYDISCOUNTCODE" />
+
+              <div class="user-form-flexbox">
+                <article>
+                    <h2>YOUR NAME</h2>
+                    <input type="text" placeholder="   Your Name"/>
+                </article>
+                <article>
+                    <h2>EMAIL</h2>
+                    <input type="text" placeholder="   email@example.com"/>
+                </article>
+              </div>
+
+              <figure className="checkbox-container">
+                <input type="checkbox" id="" name="" value="Boat"/>
+                <span>I want to send this to myself</span>
+              </figure>
+
+              <div class="recipient-form-flexbox">
+                <aside>
+                    <h2>RECIPIENT NAME</h2>
+                    <input type="text" placeholder="   Recipient Name"/>
+                </aside>
+                <aside>
+                    <h2>RECIPIENT EMAIL</h2>
+                    <input type="text" placeholder="   email@example.com"/>
+                </aside>
+              </div>
+
+              <h2 className="personal-msg-txt">PERSONAL MESSAGE <u>(OPTIONAL)</u></h2>
+              <textarea name="" id="" cols="30" rows="4"></textarea>
+              
+              <h2>DELIVERY</h2>
+              <div class="delivery-buttons-flexbox">
+                <aside> 
+                    <div className="delivery-active">SEND INSTANTLY</div>
+                </aside>
+                <aside>
+                    <div>SEND ON A FUTURE DATE</div>
+                </aside>
+              </div>
+
+              <span className="checkout-button">
+                Continue
+              </span>
+            </div>
 
             <div>
                 STORE
@@ -83,29 +140,7 @@ export default function GiftCard() {
                 <div>{cartItems}</div>
                 <div>Total: ${cartTotal}</div>
             </div>
-            <div>
-                STORE
-                <div>{listItems}</div>
-                <div>CART</div>
-                <div>{cartItems}</div>
-                <div>Total: ${cartTotal}</div>
-            </div>
-            <div>
-                STORE
-                <div>{listItems}</div>
-                <div>CART</div>
-                <div>{cartItems}</div>
-                <div>Total: ${cartTotal}</div>
-            </div>
-            <div>
-                STORE
-                <div>{listItems}</div>
-                <div>CART</div>
-                <div>{cartItems}</div>
-                <div>Total: ${cartTotal}</div>
-            </div>
             
-            {/* Need Stripe Component Here */}
         </main>
     )
 }
