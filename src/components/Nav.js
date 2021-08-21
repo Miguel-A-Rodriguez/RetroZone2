@@ -33,7 +33,7 @@ const Nav = () => {
                     <Link to="/Drinks"><span>DRINKS</span></Link>
                     <Link to="/Events"><span>EVENTS CALENDER </span></Link>
                     <Link to="/About"><span>ABOUT US</span></Link>
-                    <Link to="GiftCard"><span>GIFT CARDS</span></Link>
+                    <Link to="GiftCard2"><span>GIFT CARDS</span></Link>
                 </nav>
             </header>
 )

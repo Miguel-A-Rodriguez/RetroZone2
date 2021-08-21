@@ -1,70 +1,86 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import LogoSmall from './images/LogoSmall.png';
 
 
-export default function GiftCard() {
+export default function GiftCard2() {
 
 
-  const [cart, setCart] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
-  const items = [
-    // only need a string to store the price and send it / change it in the project (delete array)
-    // only need to use a usestate for price that changes depending on which price button clicked, 
-    // need an event listener for the custom price box that sets the state to x number
+  // const [cart, setCart] = useState([]);
+  // const [cartTotal, setCartTotal] = useState(0);
+  
+  
+  const [price, setPrice] = useState(0);
+  const items = 
+  // only need a string to store the price and send it / change it in the project (delete array)
+  // only need to use a usestate for price that changes depending on which price button clicked, 
+  // need an event listener for the custom price box that sets the state to x number
+  [
+    
     {
       id: 1,
-      name: "overwatch",
       price: 20,
     },
     {
       id: 2,
-      name: "minecraft",
-      price: 32,
+      price: 40,
     },
     {
       id: 3,
-      name: "fortnite",
-      price: 51,
+      price: 60,
     },
+    {
+      id: 4,
+      price: 80,
+    },
+    // {
+    //   id: 5,
+    //   price: 51,
+    // },
   ];
 
-  useEffect(() => {
-    total();
-  }, [cart]);
+//   useEffect(() => {
+//     total();
+//   }, [cart]);
 
-  const total = () => {
-    let totalVal = 0;
-    for (let i = 0; i < cart.length; i++) {
-      totalVal += cart[i].price;
-    }
-    setCartTotal(totalVal);
-  };
+//   const total = () => {
+//     let totalVal = 0;
+//     for (let i = 0; i < cart.length; i++) {
+//       totalVal += cart[i].price;
+//     }
+//     setCartTotal(totalVal);
+//   };
 
-  const addToCart = (el) => {
-      setCart([...cart, el]);
-  };
+//   const addToCart = (el) => {
+//       setCart([...cart, el]);
+//   };
+//   const setOurPrice = () => {
+//     setPrice(items.price);
+// };
 
-  const removeFromCart = (el) => {
-    let hardCopy = [...cart];
-    hardCopy = hardCopy.filter((cartItem) => cartItem.id !== el.id);
-    setCart(hardCopy);
-  };
-
+//   const removeFromCart = (el) => {
+//     let hardCopy = [...cart];
+//     hardCopy = hardCopy.filter((cartItem) => cartItem.id !== el.id);
+//     setCart(hardCopy);
+//   };
+  
   const listItems = items.map((el) => (
     <div key={el.id}>
-      {`${el.name}: $${el.price}`}
-      <input type="submit" value="add" onClick={() => addToCart(el)} />
+      {/* {`$${el.price}`} */}
+       {/* <button type="submit" value="" onClick={() => setOurPrice()  ? console.log(price) : console.log("failed")}>{`$${el.price}`} </button>  */}
+       
+      <button type="submit" value="" onClick={() => setPrice(el.price)}>{`$${el.price}`} </button> 
     </div>
   ));
-
+  console.log(price)
+  
   // refactor the code, replace the input tag with button tag and onclick set price state to each
   // button's price value
-  const cartItems = cart.map((el) => (
-    <div key={el.id}>
-      {`${el.name}: $${el.price}`}
-      <input type="submit" value="remove" onClick={() => removeFromCart(el)} />
-    </div>
-  ));
+  // const cartItems = cart.map((el) => (
+  //   <div key={el.id}>
+  //     {` $${el.price}`}
+  //     <input type="submit" value="remove" onClick={() => removeFromCart(el)} />
+  //   </div>
+  // ));
 
     return (
         <main className="gift-cards-container">
@@ -84,11 +100,11 @@ export default function GiftCard() {
               <h2>EGIFT CARD AMOUNT</h2>
               {/* use active css to only add dark theme to the active span item */}
               <section className="price-buttons">
-                <span>$20</span>
-                <span>$40</span>
+                <span>{listItems}</span>
+                {/* <span>$40</span>
                 <span>$60</span>
-                <span>$80</span>
-                <span>CUSTOM</span>
+                <span>$80</span> */}
+                {/* <span>CUSTOM</span> */}
               </section>
 
               <h2>PROMOTION CODE</h2>
@@ -143,8 +159,8 @@ export default function GiftCard() {
                 STORE
                 <div>{listItems}</div>
                 <div>CART</div>
-                <div>{cartItems}</div>
-                <div>Total: ${cartTotal}</div>
+                {/* <div>{cartItems}</div>
+                <div>Total: ${cartTotal}</div> */}
             </div>
             
         </main>
