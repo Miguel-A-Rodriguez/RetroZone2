@@ -1,10 +1,37 @@
 import React, { useRef, useState } from 'react';
-import { ListItems, makePriceItems } from './components/ListItems';
 import LogoSmall from './images/LogoSmall.png';
 
-export default function GiftCard2() {
-  const [customInput, setCustomInput] = useState(false);
+// handleItemSelect once is clicked it would take in parameters the index 
+const ListItems = ({item, index, itemSelect, setPrice, handleSelectColor, handleItemSelect}) => {
+  
+  return (
+    <div style={handleSelectColor(index, itemSelect)} onClick={() => {setPrice(item.price); handleItemSelect(index) }}> 
+      <span>{`$${item.price}.00`}</span>
+    </div>
+  )
+};
+const makePriceItems = (items, itemSelect = false) => {
+  let priceItems = items.map((item, index)=>{
+    return { 
+      itemSelect: itemSelect,
+      item: item,
+      index: index
+    }
+  })
+  return priceItems
+}
+  // console.log(price)
+  // console.log(itemSelect)
 
+export default function GiftCard2() {
+
+
+  // const [cart, setCart] = useState([]);
+  // const [cartTotal, setCartTotal] = useState(0);
+  // only need a string to store the price and send it / change it in the project (delete array)
+  // only need to use a usestate for price that changes depending on which price button clicked, 
+  // need an event listener for the custom price box that sets the state to x number
+    
   const [price, setPrice] = useState(20);
   const items = useRef(
     [
@@ -25,62 +52,78 @@ export default function GiftCard2() {
         id: 4,
         price: 80,
       },
-      {
-        id: 5,
-        price: "Custom",
-      },
     ]
   );
+  
   const priceItems = useRef(makePriceItems(items.current, false));
-
-  const handleSelectColor = (index, itemSelect, setCustomInput) => {
-    handleCustomButton(index, itemSelect, setCustomInput)
+  console.log(priceItems.current);
+  // const handleTrackClick = (trackClicked, group) => {
+  //   let resetTrackActive = tracksSelect.map((track, trackIndex) => {
+  //     let trackCopy = { ...track };
+  //     if (trackCopy.isActive) {
+  //       trackCopy.isActive = false;
+  //     }
+  //     return trackCopy;
+  //   });
+  //   let newTracksSelect = resetTrackActive.map((track, trackIndex) => {
+  //     let trackCopy = { ...track };
+  //     if (trackIndex === trackClicked) {
+  //       trackCopy.isActive = !track.isActive;
+  //     }
+  //     return trackCopy;
+  //   });
+  //   setTracksSelect(newTracksSelect);
+  // };
+  
+  const handleSelectColor = (index, itemSelect) => {
     if (itemSelect && index === 0) {
-      return {backgroundColor: "black", color: "white"} 
+      return {backgroundColor: "black", color: "white"}
     } else if (itemSelect && index === 1) {
-      return {backgroundColor: "black", color: "white"} 
+      return {backgroundColor: "black", color: "white"}
     } else if (itemSelect && index === 2) {
-      return {backgroundColor: "black", color: "white"} 
+      return {backgroundColor: "black", color: "white"}
     } else if (itemSelect && index === 3) {
-      return {backgroundColor: "black", color: "white"} 
-    } else if (itemSelect && index === 4) {
-      return {backgroundColor: "black", color: "white"} 
+      return {backgroundColor: "black", color: "white"}
   }
-}
-  const handleCustomButton = (index, itemSelect, setCustomInput) => {
-    if (itemSelect && index === 4){
-     setCustomInput(true)
-    } else {
-     setCustomInput(false)
-    }
-    console.log(index, itemSelect)
-  } 
+  }
 
+  // const listItems = items.map((el, index) => (
+  //   <div key={el.id} className={`item-list ${itemSelect && "price-selected"}`} type="submit" value="" onClick={() => {
+  //     setPrice(el.price);
+  //     handleSelectColor(index);
+  //     setItemSelect(!itemSelect);
+  //     console.log(index)
+  //     }
+  //   }>
+       
+  //      <span>{`$${el.price}`} </span> 
+  //    </div>
+  // ));
+  console.log(price)
+  // console.log(itemSelect)
 
+  
+  // refactor the code, replace the input tag with button tag and onclick set price state to each
+  // button's price value
+  // const cartItems = cart.map((el) => (
+  //   <div key={el.id}>
+  //     {` $${el.price}`}
+  //     <input type="submit" value="remove" onClick={() => removeFromCart(el)} />
+  //   </div>
+  // ));
   const handleItemSelect = (index) => {
-    // this line below sets all of priceItems' itemSelect property to false before changing the clickd item to true
     priceItems.current.forEach(({index, item, itemSelect},i) => {
       priceItems.current[i].itemSelect = false
     });
     priceItems.current[index].itemSelect = true; 
+    // pass handleItemSelect as props to ListItems component via the return below
+    // would change items.current[index] = true
   }
-  const handleCustomPrice = (e) =>{
-    if (e.target.value <= 2001 || e.target.value > 0){
-    setPrice(e.target.value) 
-    } else {
-      setPrice("");
-    }
-  }
-
-  const handleKeyDown = e => {
-    if (e.key === "e" || 0) {
-      e.preventDefault();
-    }
-  };
-
+  console.log(priceItems.current)
     return (
         <main className="gift-cards-container">
             <nav>
+                {/* <span>Dummy Text</span> */}
                 <a className="item-1" href="/"><img src={LogoSmall }alt="Retro-Zone-Home-Button" /></a>
                 <a className="item-2" href=""><p>Order an eGift card</p></a>
             </nav>
@@ -93,6 +136,7 @@ export default function GiftCard2() {
 
             <div className="payment-container">
               <h2>EGIFT CARD AMOUNT</h2>
+              {/* use active css to only add dark theme to the active span item */}
               <section className="price-buttons">
                 <span className="list-items">
                   {priceItems.current.map(({index, item, itemSelect},i) => (
@@ -104,25 +148,13 @@ export default function GiftCard2() {
                       setPrice={setPrice}
                       handleSelectColor={handleSelectColor}
                       handleItemSelect={handleItemSelect}
-                      handleCustomButton={handleCustomButton}
-                      setCustomInput={setCustomInput}
                     />
                   ))
                   }
+                  <b>CUSTOM</b>
                 </span>
+                {/* <div className="custom-button"><span>CUSTOM</span></div> */}
               </section>
-              {customInput &&  (
-                <input 
-                type="number" 
-                style={price > 2001 || price < 1 ? {border: "2px solid #FF7F7F", outline: "none", borderRadius: "3px"} : {border: "2px solid green", outline: "none", borderRadius: "3px"}}
-                min="1" max="2000" 
-                placeHolder=" $1 to $2,000"
-                value ={price} 
-                onChange = {handleCustomPrice}
-                setCustomInput = {setCustomInput}
-                onKeyDown={handleKeyDown}
-                />
-                )}
 
               <h2>PROMOTION CODE</h2>
               <input type="text" placeholder="   MYDISCOUNTCODE" />
@@ -171,6 +203,15 @@ export default function GiftCard2() {
                 Continue
               </span>
             </div>
+
+            <div>
+                STORE
+                {/* <div>{listItems}</div> */}
+                <div>CART</div>
+                {/* <div>{cartItems}</div>
+                <div>Total: ${cartTotal}</div> */}
+            </div>
+            
         </main>
     )
 }

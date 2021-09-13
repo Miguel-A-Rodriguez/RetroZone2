@@ -2,6 +2,18 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 /* @import "~slick-carousel/slick/slick-theme.css";
 @import "~slick-carousel/slick/slick.css"; */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 a{
     text-decoration: none;
 }
@@ -275,7 +287,7 @@ padding-bottom: 70px;
     font-size: 100%;
 }
 .social-media-links div, span{
-    margin: 0 5px;
+    /* margin: 0 5px; */
 }
 
 /* drinks page css */
@@ -634,32 +646,71 @@ padding-bottom: 70px;
 .payment-container .price-buttons{
     font-size: 15px;
     font-stretch: 100%;
-    border: 1px solid rgb(213, 217, 220);
-    border-radius: 5px;
     height: 40px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
+}
+.price-buttons{
+    color: #64696E;
 }
 .payment-container .price-buttons span{
-    height: 30px;
-    padding: 0px 25px;
     padding-left: auto;
     padding-right: auto;
-    padding-top: 10px;
-    border-right: 1px rgb(213, 217, 220) solid;
-    color: #64696E;
     font-weight: bold;
+    width: 100%;
 }
 
-.price-buttons span:nth-child(5){
-    border: none;
+.payment-container .price-buttons span:nth-child(5){
+    border-right: none;
+}
+.list-items{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items:center;
+    border: 1px solid #d5d9dc;
+    border-radius: 3px;
+}
+.list-items b{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.list-items div{
+    height: 25px;
+    border-right: 1px rgb(213, 217, 220) solid;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+.list-items div:nth-of-type(5){
+    width: 100%;
+    padding-left: 35px;
+    border-right: none;
+}
+.custom-button{
+    border: 1px solid rgb(213, 217, 220);
+    border-radius: 3px;
+    height: 25px;
+    border-right: 1px rgb(213, 217, 220) solid;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+}
+
+/* conditional class on price buttons */
+.item-list{
+    background-color: white;
+}
+.price-selected{
+    color: white;
+    background-color: black;
 }
 .payment-container input{
     height: 30px;
     border: 1px rgb(213, 217, 220) solid;
     margin-bottom: 5px;
 }
+
 
 .user-form-flexbox{
     display: flex;
