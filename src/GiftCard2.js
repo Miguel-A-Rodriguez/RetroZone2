@@ -1,11 +1,14 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import "react-datetime/css/react-datetime.css";
+import DateTime from './components/DateTime';
 import { ListItems, makePriceItems } from './components/ListItems';
 import LogoSmall from './images/LogoSmall.png';
-
+import content from './static/content';
 export default function GiftCard2() {
   const [customInput, setCustomInput] = useState(false);
 
   const [price, setPrice] = useState(20);
+
   const items = useRef(
     [
       
@@ -53,7 +56,7 @@ export default function GiftCard2() {
     } else {
      setCustomInput(false)
     }
-    console.log(index, itemSelect)
+    console.log(index, itemSelect, price)
   } 
 
 
@@ -79,6 +82,7 @@ export default function GiftCard2() {
   };
 
     return (
+        
         <main className="gift-cards-container">
             <nav>
                 <a className="item-1" href="/"><img src={LogoSmall }alt="Retro-Zone-Home-Button" /></a>
@@ -91,8 +95,8 @@ export default function GiftCard2() {
                 <div className="gift-card-img-container"></div>
             </div>
 
-            <div className="payment-container">
-              <h2>EGIFT CARD AMOUNT</h2>
+            <form className="payment-container">
+              <label>EGIFT CARD AMOUNT</label>
               <section className="price-buttons">
                 <span className="list-items">
                   {priceItems.current.map(({index, item, itemSelect},i) => (
@@ -124,40 +128,78 @@ export default function GiftCard2() {
                 />
                 )}
 
-              <h2>PROMOTION CODE</h2>
+              <label>PROMOTION CODE</label>
               <input type="text" placeholder="   MYDISCOUNTCODE" />
 
-              <div class="user-form-flexbox">
-                <article>
-                    <h2>YOUR NAME</h2>
-                    <input type="text" placeholder="   Your Name"/>
-                </article>
-                <article>
-                    <h2>EMAIL</h2>
-                    <input type="text" placeholder="   email@example.com"/>
-                </article>
-              </div>
+            <div class="user-form-flexbox">
+              <article >
+                {content.yourNameEmail.map((input, key)=>{
+                return (
+                      <>
+                          <section>
+                            <p key={key}></p>
+                            <label>{input.label}</label>
+                            <input name={input.name}
+                            type={input.type}
+                            placeholder={input.placeholder}/>
+                          </section>
+                      </>
+                  );
+                })}
+              
+              </article>
+            </div>
+              
+
+              {/* <div class="user-form-flexbox">
+                    <article>
+                        <label>YOUR NAME</label>
+                        <input type="text" placeholder="   Your Name"/>
+                    </article>
+                    <article>
+                        <label>YOUR EMAIL</label>
+                        <input type="text" placeholder="   email@example.com"/>
+                    </article>
+              </div> */}
 
               <figure className="checkbox-container">
                 <input type="checkbox" id="" name="" value="Boat"/>
                 <span>I want to send this to myself</span>
               </figure>
 
-              <div class="recipient-form-flexbox">
+              <div class="user-form-flexbox">
+              <article >
+                {content.recipientNameEmail.map((input, key)=>{
+                return (
+                      <>
+                          <section>
+                            <p key={key}></p>
+                            <label>{input.label}</label>
+                            <input name={input.name}
+                            type={input.type}
+                            placeholder={input.placeholder}/>
+                          </section>
+                      </>
+                  );
+                })}
+              
+              </article>
+            </div>
+              {/* <div class="recipient-form-flexbox">
                 <aside>
-                    <h2>RECIPIENT NAME</h2>
+                    <label>RECIPIENT NAME</label>
                     <input type="text" placeholder="   Recipient Name"/>
                 </aside>
                 <aside>
-                    <h2>RECIPIENT EMAIL</h2>
+                    <label>RECIPIENT EMAIL</label>
                     <input type="text" placeholder="   email@example.com"/>
                 </aside>
-              </div>
+              </div> */}
 
-              <h2 className="personal-msg-txt">PERSONAL MESSAGE <u>(OPTIONAL)</u></h2>
+              <label className="personal-msg-txt">PERSONAL MESSAGE <u>(OPTIONAL)</u></label>
               <textarea name="" id="" cols="30" rows="4"></textarea>
               
-              <h2>DELIVERY</h2>
+              <label>DELIVERY</label>
               <div class="delivery-buttons-flexbox">
                 <aside> 
                     <div className="delivery-active">SEND INSTANTLY</div>
@@ -165,12 +207,16 @@ export default function GiftCard2() {
                 <aside>
                     <div>SEND ON A FUTURE DATE</div>
                 </aside>
-              </div>
 
+                
+              </div>
+              <section className="calendar">
+                <DateTime/>
+              </section>
               <span className="checkout-button">
                 Continue
               </span>
-            </div>
+            </form>
         </main>
     )
 }
