@@ -8,6 +8,8 @@ export default function GiftCard2() {
   const [customInput, setCustomInput] = useState(false);
 
   const [price, setPrice] = useState(20);
+  const [promoCounter, setPromoCounter] = useState(0);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const items = useRef(
     [
@@ -81,6 +83,23 @@ export default function GiftCard2() {
     }
   };
 
+
+  const handlePromoCode = (e) =>{
+    if (e.target.value === "Retro"){
+        setPrice(price * 0.90);
+        setIsDisabled(!isDisabled); 
+
+      } else if (e.target.value === "Game"){
+        setPrice(price * 0.85); 
+        setPromoCounter(promoCounter + 1);
+        console.log(price);
+      } else if (e.target.value === "Party"){
+          setPrice(price * 0.80); 
+          setPromoCounter(promoCounter + 1);
+          console.log(price);
+        };
+   };
+  // {(event) => setPromo(event.target.value)}
     return (
         
         <main className="gift-cards-container">
@@ -129,7 +148,11 @@ export default function GiftCard2() {
                 )}
 
               <label>PROMOTION CODE</label>
-              <input type="text" placeholder="   MYDISCOUNTCODE" />
+              <input 
+              disabled={isDisabled}
+              onChange={handlePromoCode}
+              type="text" 
+              placeholder="   MYDISCOUNTCODE" />
 
             <div class="user-form-flexbox">
               <article >
