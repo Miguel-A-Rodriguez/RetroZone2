@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import "react-datetime/css/react-datetime.css";
 import DateTime from './components/DateTime';
 import { ListItems, makePriceItems } from './components/ListItems';
@@ -39,12 +39,11 @@ export default function GiftCard2() {
     ]
   );
   const priceItems = useRef(makePriceItems(items.current, false));
-
-  const handleSelectColor = (index, itemSelect, setCustomInput) => {
-    handleCustomButton(index, itemSelect, setCustomInput)
+  useEffect(() => {
+    console.log(price)
+  });
+  const handleSelectColor = (index, itemSelect) => {
     if (itemSelect && index === 0) {
-      // setIsDisabled(false);
-      setPromoText(null);
       return {backgroundColor: "black", color: "white"} 
     } else if (itemSelect && index === 1) {
       return {backgroundColor: "black", color: "white"} 
@@ -56,13 +55,12 @@ export default function GiftCard2() {
       return {backgroundColor: "black", color: "white"} 
   }
 }
-  const handleCustomButton = (index, itemSelect, setCustomInput) => {
-    if (itemSelect && index === 4){
+  const handleCustomButton = (index, setCustomInput) => {
+    if (index === 4){
      setCustomInput(true)
     } else {
      setCustomInput(false)
     }
-    console.log(index, itemSelect, price)
   } 
 
 
@@ -73,11 +71,15 @@ export default function GiftCard2() {
     });
     priceItems.current[index].itemSelect = true; 
   }
+  
+  
+
   const handleCustomPrice = (e) =>{
-    if (e.target.value <= 2001 || e.target.value > 0){
-    setPrice(e.target.value) 
+    const customValue = +e.target.value
+    if (customValue <= 2001 || customValue > 0){
+    setPrice(customValue) 
     } else {
-      setPrice("");
+      setPrice(0);
     }
   }
 
@@ -88,31 +90,31 @@ export default function GiftCard2() {
   };
 
 
-  const handlePromoCode = (e) =>{
-    if (e.target.value === "Retro"){
+  const handlePromoCode = () =>{
+    console.log(promoText)
+    if (promoText === "Retro"){
         setPrice(price * 0.90);
-        setIsDisabled(!isDisabled); 
-
-      } else if (e.target.value === "Game"){
-        setPrice(price * 0.85); 
-        setIsDisabled(!isDisabled);
+        setIsDisabled(true); 
         console.log(price);
-      } else if (e.target.value === "Party"){
+      } else if (promoText === "Game"){
+        setPrice(price * 0.85); 
+        setIsDisabled(true);
+        console.log(price);
+      } else if (promoText === "Party"){
           setPrice(price * 0.80); 
-          setIsDisabled(!isDisabled);
+          setIsDisabled(true);
           console.log(price);
         };
    };
   // {(event) => setPromo(event.target.value)}
     return (
-        
         <main className="gift-cards-container">
             <nav>
                 <a className="item-1" href="/"><img src={LogoSmall }alt="Retro-Zone-Home-Button" /></a>
                 <a className="item-2" href=""><p>Order an eGift card</p></a>
             </nav>
 
-            <div class="background-color-container">
+            <div className="background-color-container">
                 <span>Give the Perfect Gift</span>
                 <p>Get a voucher for yourself or gift one to a friend</p>
                 <div className="gift-card-img-container"></div>
@@ -133,6 +135,7 @@ export default function GiftCard2() {
                       handleItemSelect={handleItemSelect}
                       handleCustomButton={handleCustomButton}
                       setCustomInput={setCustomInput}
+                      setIsDisabled={setIsDisabled}
                     />
                   ))
                   }
@@ -140,26 +143,31 @@ export default function GiftCard2() {
               </section>
               {customInput &&  (
                 <input 
-                type="number" 
-                style={price > 2001 || price < 1 ? {border: "2px solid #FF7F7F", outline: "none", borderRadius: "3px"} : {border: "2px solid green", outline: "none", borderRadius: "3px"}}
-                min="1" max="2000" 
-                placeHolder=" $1 to $2,000"
-                value ={price} 
-                onChange = {handleCustomPrice}
-                setCustomInput = {setCustomInput}
-                onKeyDown={handleKeyDown}
-                />
+                    type="number" 
+                    style={price > 2001 || price < 1 ? {border: "2px solid #FF7F7F", outline: "none", borderRadius: "3px"} : {border: "2px solid green", outline: "none", borderRadius: "3px"}}
+                    min="1" max="2000" 
+                    placeholder=" $1 to $2,000"
+                    value ={price ? price : ""} 
+                    onChange = {handleCustomPrice}
+                    onKeyDown={handleKeyDown}
+                    />
                 )}
 
               <label>PROMOTION CODE</label>
               <input 
-              disabled={isDisabled}
-              onChange={(event) => setPromoText(event.target.value)}
-              type="text" 
-              placeholder="   MYDISCOUNTCODE" />
-              <button onClick={handlePromoCode}>Apply</button>
+                  disabled={isDisabled}
+                  onChange={(event) => setPromoText(event.target.value)}
+                  type="text" 
+                  placeholder="   MYDISCOUNTCODE" />
+              <button 
+                  type="button" 
+                  onClick={handlePromoCode}
+                  disabled={isDisabled}
+              >
+                   Apply
+              </button>
 
-            <div class="user-form-flexbox">
+            <div className="user-form-flexbox">
               <article >
                 {content.yourNameEmail.map((input, key)=>{
                 return (
@@ -179,7 +187,7 @@ export default function GiftCard2() {
             </div>
               
 
-              {/* <div class="user-form-flexbox">
+              {/* <div className="user-form-flexbox">
                     <article>
                         <label>YOUR NAME</label>
                         <input type="text" placeholder="   Your Name"/>
@@ -195,7 +203,7 @@ export default function GiftCard2() {
                 <span>I want to send this to myself</span>
               </figure>
 
-              <div class="user-form-flexbox">
+              <div className="user-form-flexbox">
               <article >
                 {content.recipientNameEmail.map((input, key)=>{
                 return (
@@ -213,7 +221,7 @@ export default function GiftCard2() {
               
               </article>
             </div>
-              {/* <div class="recipient-form-flexbox">
+              {/* <div className="recipient-form-flexbox">
                 <aside>
                     <label>RECIPIENT NAME</label>
                     <input type="text" placeholder="   Recipient Name"/>
@@ -228,7 +236,7 @@ export default function GiftCard2() {
               <textarea name="" id="" cols="30" rows="4"></textarea>
               
               <label>DELIVERY</label>
-              <div class="delivery-buttons-flexbox">
+              <div className="delivery-buttons-flexbox">
                 <aside> 
                     <div className="delivery-active">SEND INSTANTLY</div>
                 </aside>
