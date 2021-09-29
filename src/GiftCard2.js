@@ -4,13 +4,15 @@ import DateTime from './components/DateTime';
 import { ListItems, makePriceItems } from './components/ListItems';
 import LogoSmall from './images/LogoSmall.png';
 import content from './static/content';
+
 export default function GiftCard2() {
+  
   const [customInput, setCustomInput] = useState(false);
 
   const [price, setPrice] = useState(20);
   const [promoCounter, setPromoCounter] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
-
+  const [promoText, setPromoText] = useState("");
   const items = useRef(
     [
       
@@ -41,6 +43,8 @@ export default function GiftCard2() {
   const handleSelectColor = (index, itemSelect, setCustomInput) => {
     handleCustomButton(index, itemSelect, setCustomInput)
     if (itemSelect && index === 0) {
+      // setIsDisabled(false);
+      setPromoText(null);
       return {backgroundColor: "black", color: "white"} 
     } else if (itemSelect && index === 1) {
       return {backgroundColor: "black", color: "white"} 
@@ -91,11 +95,11 @@ export default function GiftCard2() {
 
       } else if (e.target.value === "Game"){
         setPrice(price * 0.85); 
-        setPromoCounter(promoCounter + 1);
+        setIsDisabled(!isDisabled);
         console.log(price);
       } else if (e.target.value === "Party"){
           setPrice(price * 0.80); 
-          setPromoCounter(promoCounter + 1);
+          setIsDisabled(!isDisabled);
           console.log(price);
         };
    };
@@ -150,9 +154,10 @@ export default function GiftCard2() {
               <label>PROMOTION CODE</label>
               <input 
               disabled={isDisabled}
-              onChange={handlePromoCode}
+              onChange={(event) => setPromoText(event.target.value)}
               type="text" 
               placeholder="   MYDISCOUNTCODE" />
+              <button onClick={handlePromoCode}>Apply</button>
 
             <div class="user-form-flexbox">
               <article >
