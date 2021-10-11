@@ -65,6 +65,7 @@
     ]
   },
   "devDependencies": {
+    "@types/yup": "^0.29.13",
     "css-loader": "^6.2.0"
   }
 }

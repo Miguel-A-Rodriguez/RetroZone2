@@ -713,8 +713,23 @@ padding-bottom: 70px;
     border: 1px rgb(213, 217, 220) solid;
     margin-bottom: 5px;
 }
-
-
+.inputWithButtton{
+    position: relative;
+    height: 100px;
+}
+.promo-code-input{
+    padding-right: 30px;
+}
+.promo-code-button{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 12%;
+    margin-left: auto;
+    margin-right: 5px;
+    position: relative;
+    bottom: 32px
+}
 .user-form-flexbox{
     display: flex;
     justify-content: space-between;
@@ -727,7 +742,10 @@ padding-bottom: 70px;
     width: 96%;
     height: 30px;
 }
-
+.user-form-flexbox .error-message{
+    color: red;
+    font-size: 14px;
+}
 .checkbox-container{
     display: flex;
     justify-content: flex-start;

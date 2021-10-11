@@ -1,28 +1,37 @@
 const content = {
-    yourNameEmail: [
+
+
+    yourName: [
       {
           label: 'YOUR NAME',
-          name: 'your name',
+          name: 'yourname',
           type: 'text',
           placeholder: '  Your Name',
       },
+    ],
+    yourEmail: [
       {
         label: 'YOUR EMAIL',
-        name: 'your email',
+        name: 'youremail',
         type: 'email',
         placeholder: '  Your Email',
       },
     ],
-    recipientNameEmail: [
+
+    recipientName: [
       {
-          label: 'RECIPIENT NAME',
-          name: 'recipient name',
-          type: 'text',
-          placeholder: '  Recipient Name',
-      },
+        label: 'RECIPIENT NAME',
+        name: 'recipientname',
+        type: 'text',
+        placeholder: '  Recipient Name',
+    },
+    ],
+
+    recipientEmail: [
+     
       {
         label: 'RECIPIENT EMAIL',
-        name: 'recipient email',
+        name: 'recipientemail',
         type: 'email',
         placeholder: '  Recipient Email',
       },

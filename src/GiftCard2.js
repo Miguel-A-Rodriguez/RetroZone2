@@ -1,11 +1,30 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useRef, useState } from 'react';
 import "react-datetime/css/react-datetime.css";
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 import DateTime from './components/DateTime';
 import { ListItems, makePriceItems } from './components/ListItems';
 import LogoSmall from './images/LogoSmall.png';
 import content from './static/content';
 
+
+const schema = yup.object().shape({
+  recipientname: yup.string().required().min(4),
+  recipientemail: yup.string().required("Please Enter an Email").email(),
+  yourname: yup.string().required().min(4),
+  youremail: yup.string().required("Please Enter an Email").email(),
+});
 export default function GiftCard2() {
+
+  const {register, handleSubmit, formState: { errors }} = useForm(
+    {
+      resolever: yupResolver(schema), 
+    }
+  );
+
+  const onSubmit = (data) => console.log(data);
+  console.log(errors)
   
   const [customInput, setCustomInput] = useState(false);
 
@@ -13,6 +32,7 @@ export default function GiftCard2() {
   const [promoCounter, setPromoCounter] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
   const [promoText, setPromoText] = useState("");
+  
   const items = useRef(
     [
       
@@ -107,6 +127,9 @@ export default function GiftCard2() {
         };
    };
   // {(event) => setPromo(event.target.value)}
+
+
+  
     return (
         <main className="gift-cards-container">
             <nav>
@@ -120,7 +143,7 @@ export default function GiftCard2() {
                 <div className="gift-card-img-container"></div>
             </div>
 
-            <form className="payment-container">
+            <form onSubmit={handleSubmit(onSubmit)} className="payment-container">
               <label>EGIFT CARD AMOUNT</label>
               <section className="price-buttons">
                 <span className="list-items">
@@ -154,49 +177,75 @@ export default function GiftCard2() {
                 )}
 
               <label>PROMOTION CODE</label>
-              <input 
-                  disabled={isDisabled}
-                  onChange={(event) => setPromoText(event.target.value)}
-                  type="text" 
-                  placeholder="   MYDISCOUNTCODE" />
-              <button 
-                  type="button" 
-                  onClick={handlePromoCode}
-                  disabled={isDisabled}
-              >
-                   Apply
-              </button>
+              
+                <input
+                    className="promo-code-input"
+                    disabled={isDisabled}
+                    onChange={(event) => setPromoText(event.target.value)}
+                    type="text"
+                    placeholder="   MYDISCOUNTCODE"
+                
+                    />
+                <button
+                    className="promo-code-button"
+                    type="button"
+                    onClick={handlePromoCode}
+                    disabled={isDisabled}
+                >
+                     Apply
+                </button>
+           
 
             <div className="user-form-flexbox">
               <article >
-                {content.yourNameEmail.map((input, key)=>{
+
+                {/* your name input  */}
+                {content.yourName.map((input, key)=>{
                 return (
                       <>
                           <section>
                             <p key={key}></p>
                             <label>{input.label}</label>
                             <input name={input.name}
+                            autoFocus="false"
                             type={input.type}
-                            placeholder={input.placeholder}/>
+                            placeholder={input.placeholder}
+                            {...register("yourName", {
+                              required: "Required Field",
+                            })}
+                            />
+                            <p className="error-message">{errors.yourName && errors.yourName.message}</p>
                           </section>
+                            {/* <p>{errors[input.name]?.message}</p> */}
+                      </>
+                  );
+                })}
+
+                {/* Your Email Input */}
+                {content.yourEmail.map((input, key)=>{
+                return (
+                      <>
+                          <section>
+                            <p key={key}></p>
+                            <label>{input.label}</label>
+                            <input name={input.name}
+                            autoFocus="false"
+                            type={input.type}
+                            placeholder={input.placeholder}
+                            ref={register}
+                            {...register("yourEmail", {
+                              required: "Required Field",
+                            })}
+                            />
+                            <p className="error-message">{errors.yourEmail && errors.yourEmail.message}</p>
+                          </section>
+                            {/* <p>{errors[input.name]?.message}</p> */}
                       </>
                   );
                 })}
               
               </article>
             </div>
-              
-
-              {/* <div className="user-form-flexbox">
-                    <article>
-                        <label>YOUR NAME</label>
-                        <input type="text" placeholder="   Your Name"/>
-                    </article>
-                    <article>
-                        <label>YOUR EMAIL</label>
-                        <input type="text" placeholder="   email@example.com"/>
-                    </article>
-              </div> */}
 
               <figure className="checkbox-container">
                 <input type="checkbox" id="" name="" value="Boat"/>
@@ -205,32 +254,56 @@ export default function GiftCard2() {
 
               <div className="user-form-flexbox">
               <article >
-                {content.recipientNameEmail.map((input, key)=>{
+                {/* Recipient Name Input */}
+                {content.recipientName.map((input, key)=>{
                 return (
                       <>
                           <section>
                             <p key={key}></p>
                             <label>{input.label}</label>
-                            <input name={input.name}
+                            <input 
+                            autoFocus="false"
+                            name={input.name}
                             type={input.type}
-                            placeholder={input.placeholder}/>
+                            placeholder={input.placeholder}
+                            ref={register}
+                            {...register("recipientName", {
+                              required: "Required Field",
+                            })}
+                            />
+                            <p className="error-message">{errors.recipientName && errors.recipientName.message}</p>
                           </section>
+                          {/* <p>{errors[input.name]?.message}</p> */}
                       </>
                   );
                 })}
-              
+
+                {/* Recipient Email Input */}
+                {content.recipientEmail.map((input, key)=>{
+                return (
+                      <>
+                          <section>
+                            <p key={key}></p>
+                            <label>{input.label}</label>
+                            <input 
+                            autoFocus="false"
+                            name={input.name}
+                            type={input.type}
+                            placeholder={input.placeholder}
+                            ref={register}
+                            {...register("recipientEmail", {
+                              required: "Required Field",
+                            })}
+                            />
+                            <p className="error-message">{errors.recipientEmail && errors.recipientEmail.message}</p>
+                          </section>
+                          {/* <p>{errors[input.name]?.message}</p> */}
+                      </>
+                  );
+                })}
+               
               </article>
             </div>
-              {/* <div className="recipient-form-flexbox">
-                <aside>
-                    <label>RECIPIENT NAME</label>
-                    <input type="text" placeholder="   Recipient Name"/>
-                </aside>
-                <aside>
-                    <label>RECIPIENT EMAIL</label>
-                    <input type="text" placeholder="   email@example.com"/>
-                </aside>
-              </div> */}
 
               <label className="personal-msg-txt">PERSONAL MESSAGE <u>(OPTIONAL)</u></label>
               <textarea name="" id="" cols="30" rows="4"></textarea>
@@ -249,9 +322,9 @@ export default function GiftCard2() {
               <section className="calendar">
                 <DateTime/>
               </section>
-              <span className="checkout-button">
+              <button className="checkout-button" type="submit">
                 Continue
-              </span>
+              </button>
             </form>
         </main>
     )
