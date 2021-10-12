@@ -31,7 +31,11 @@ export default function GiftCard2() {
   const [price, setPrice] = useState(20);
   const [promoCounter, setPromoCounter] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [recipientInfo, setRecipientInfo] = useState(true);
   const [promoText, setPromoText] = useState("");
+  const [personalMessageText, setPersonalMessageText] = useState("");
+  const [sendInstantlyButton, setSendInstantlyButton] = useState(false);
+  const [sendFutureButton, setSendFutureButton] = useState(false);
   
   const items = useRef(
     [
@@ -83,6 +87,10 @@ export default function GiftCard2() {
     }
   } 
 
+  const handleDeliveryButtonColor = () => {
+
+  }
+
 
   const handleItemSelect = (index) => {
     // this line below sets all of priceItems' itemSelect property to false before changing the clickd item to true
@@ -126,9 +134,15 @@ export default function GiftCard2() {
           console.log(price);
         };
    };
-  // {(event) => setPromo(event.target.value)}
-
-
+  
+   const handleInstantButton = () => {
+    setSendInstantlyButton(true);
+    setSendFutureButton(false);
+   }
+   const handleFutureButton = () => {
+    setSendFutureButton(true);
+    setSendInstantlyButton(false);
+   }
   
     return (
         <main className="gift-cards-container">
@@ -246,12 +260,17 @@ export default function GiftCard2() {
               
               </article>
             </div>
-
+            
               <figure className="checkbox-container">
-                <input type="checkbox" id="" name="" value="Boat"/>
+                <input 
+                type="checkbox" 
+                name=""
+                onClick={() => setRecipientInfo(!recipientInfo)} 
+                value="Boat"/>
                 <span>I want to send this to myself</span>
               </figure>
-
+              
+              {recipientInfo &&  (
               <div className="user-form-flexbox">
               <article >
                 {/* Recipient Name Input */}
@@ -304,17 +323,31 @@ export default function GiftCard2() {
                
               </article>
             </div>
-
+           )}
               <label className="personal-msg-txt">PERSONAL MESSAGE <u>(OPTIONAL)</u></label>
-              <textarea name="" id="" cols="30" rows="4"></textarea>
-              
+              <textarea 
+              name="" 
+              id="" 
+              onChange={(event) => setPersonalMessageText(event.target.value)}
+              cols="30" 
+              rows="4">
+              </textarea>
+              {/* try putting functions in the onClicks that set the states */}
               <label>DELIVERY</label>
               <div className="delivery-buttons-flexbox">
                 <aside> 
-                    <div className="delivery-active">SEND INSTANTLY</div>
+                    <div 
+                    className={sendInstantlyButton ? 'delivery-active' : 'delivery'}
+                    onClick={ handleInstantButton }
+                    >
+                      SEND INSTANTLY</div>
                 </aside>
                 <aside>
-                    <div>SEND ON A FUTURE DATE</div>
+                    <div 
+                    className={sendFutureButton ? 'delivery-active' : 'delivery'}
+                    onClick={handleFutureButton}
+                    >
+                      SEND ON A FUTURE DATE</div>
                 </aside>
 
                 
