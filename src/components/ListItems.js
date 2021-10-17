@@ -1,4 +1,4 @@
-const ListItems = ({item, index, itemSelect, setPrice, handleSelectColor, handleItemSelect, handleCustomButton, setCustomInput, setIsDisabled}) => {
+const ListItems = ({item, index, itemSelect, price, setPrice, handleSelectColor, handleItemSelect, handleCustomButton, setCustomInput, setIsDisabled}) => {
   
   /* Below code was on the onClick, but because everything was running on the same render
   handleCustomButton only got the current state and not the changed state due to all the functions being
@@ -20,9 +20,10 @@ const ListItems = ({item, index, itemSelect, setPrice, handleSelectColor, handle
   // vs 
   //  bad practice
   // onClick={myFunction()}
+
     return (
       <>
-      <div style={handleSelectColor(index, itemSelect)} 
+      <div style={handleSelectColor(index, itemSelect, price)} 
            onClick={onClick}> 
         <span>{item.price == "Custom" ? `${item.price}` : `$${item.price}.00`}</span>
         
