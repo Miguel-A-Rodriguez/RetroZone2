@@ -15,28 +15,32 @@ const schema = yup.object().shape({
   yourname: yup.string().required("Please Enter Your Name"),
   youremail: yup.string().required("Please Enter an Email").email(),
 });
+ 
 export default function GiftCard2() {
 
-  const {register, handleSubmit, formState: { errors }, ...props} = useForm(
+  const {register, handleSubmit, formState: { errors }} = useForm(
     {
-      resolver: yupResolver(schema), 
-    }
+      resolver: yupResolver(schema),
+    },
   );
-  console.log(props);
-  const onSubmit = (data) => {
-    // call handleSubmit with the data payload IF there aren't any errors, ie: !errors.length >= 1
-    // if there are errors, return or do whatever you want with it
-    // handleSubmit(data);
 
-    // redirect to next page after
-    // history.push("/CheckOut");
+  const onSubmit = (data) => {
+
     console.log(data);
+    history.push("/CheckOut");
+    console.log(errors?.message);
   };
+  console.log(errors);
+  
+
+
   const [customInput, setCustomInput] = useState(false);
 
   const [price, setPrice] = useState(20);
   const [promoCounter, setPromoCounter] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
+
+
   const [recipientInfo, setRecipientInfo] = useState(true);
   const [promoText, setPromoText] = useState("");
   const [personalMessageText, setPersonalMessageText] = useState("");
@@ -73,10 +77,6 @@ export default function GiftCard2() {
   useEffect(() => {
     console.log(price)
   });
-
-  const defaultPriceButtonColor = (price, index, itemSelect) => {
-
-  }
 
   const handleSelectColor = (index, itemSelect, price) => {
     if (price === 20 && index === 0) {
@@ -152,7 +152,7 @@ export default function GiftCard2() {
     setSendInstantlyButton(false);
    }
   
-  //  const onSubmitRedirect = (e) => {
+  //  const OnSubmitRedirect = (e) => {
   //   const history = useHistory();
   //   e.preventDefault();
   //  history.push('/CheckOut')
@@ -169,8 +169,23 @@ export default function GiftCard2() {
 
   const history = useHistory();
 
-  const handleSubmitRedirect = (event) => {
-  }
+  // const handleSubmitRedirect = (e) => {
+  //   if (schema.validate({})
+  //   .catch(function(error) {
+  //       console.log(errors);
+  //     })) {return } else {
+  //     history.push({
+  //       pathname:  "/CheckOut",
+  //    });
+  //   }
+    
+  // }
+
+  const handleSubmitRedirect = async (e) => {
+    const result = await schema.validate({});
+    console.log(result);
+    } 
+    
 
     return (
         <main className="gift-cards-container">
@@ -185,7 +200,7 @@ export default function GiftCard2() {
                 <div className="gift-card-img-container"></div>
             </div>
             {/* (event) => handleSubmitRedirect(event) */}
-            <form onSubmit={handleSubmit(onSubmit)} className="payment-container">
+            <form onSubmit={handleSubmit(onSubmit) } className="payment-container">
               <label>EGIFT CARD AMOUNT</label>
               <section className="price-buttons">
                 <span className="list-items">
@@ -250,11 +265,10 @@ export default function GiftCard2() {
                             <p key={key}></p>
                             <label>{input.label}</label>
                             <input name={input.name}
-                            // autoFocus="false"
                             type={input.type}
                             placeholder={input.placeholder}
-                            {...register("yourName", {
-                              required: "Required Field",
+                            {...register(input.name, {
+                              required: true,
                             })}
                             />
                             {/* <p className="error-message">{errors.yourName && errors.yourName.message}</p> */}
@@ -271,19 +285,18 @@ export default function GiftCard2() {
                           <section>
                             <p key={key}></p>
                             <label>{input.label}</label>
-                            <input name={input.name}
-                            // autoFocus="false"
+                            <input 
+                            name={input.name}
                             type={input.type}
                             placeholder={input.placeholder}
-                            ref={register}
-                            {...register("yourEmail", {
-                              required: "Required Field",
+                            {...register(input.name, {
+                              required: true,
                             })}
                             />
                             {/* <p className="error-message">{errors.yourEmail && errors.yourEmail.message}</p> */}
                             <p className="error-message">{errors[input.name]?.message}</p>
                           </section>
-                            {/* <p>{errors[input.name]?.message}</p> */}
+                            
                       </>
                   );
                 })}
@@ -296,7 +309,9 @@ export default function GiftCard2() {
                 type="checkbox" 
                 name=""
                 onClick={() => setRecipientInfo(!recipientInfo)} 
-                value="Boat"/>
+                value="Boat"
+                // checked
+                />
                 <span>I want to send this to myself</span>
               </figure>
               
@@ -315,9 +330,8 @@ export default function GiftCard2() {
                             name={input.name}
                             type={input.type}
                             placeholder={input.placeholder}
-                            ref={register}
-                            {...register("recipientName", {
-                              required: "Required Field",
+                            {...register(input.name, {
+                              required: true,
                             })}
                             />
                             {/* <p className="error-message">{errors.recipientName && errors.recipientName.message}</p> */}
@@ -340,8 +354,8 @@ export default function GiftCard2() {
                             type={input.type}
                             placeholder={input.placeholder}
                             ref={register}
-                            {...register("recipientEmail", {
-                              required: "Required Field",
+                            {...register(input.name, {
+                              required: true,
                             })}
                             />
                             {/* <p className="error-message">{errors.recipientEmail && errors.recipientEmail.message}</p> */}
@@ -393,7 +407,8 @@ export default function GiftCard2() {
               className="checkout-button" 
               type="submit"
               disabled={errors.length >= 1}
-              onClick="">
+              // onClick={handleSubmitRedirect}
+              >
                 Continue
               </button>
             </form>
