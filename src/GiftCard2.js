@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Formik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 import "react-datetime/css/react-datetime.css";
 import { useForm } from 'react-hook-form';
@@ -9,14 +10,62 @@ import { ListItems, makePriceItems } from './components/ListItems';
 import LogoSmall from './images/LogoSmall.png';
 import content from './static/content';
 
-const schema = yup.object().shape({
-  recipientname: yup.string().required("Please Enter Their Name"),
-  recipientemail: yup.string().required("Please Enter an Email").email(),
-  yourname: yup.string().required("Please Enter Your Name"),
-  youremail: yup.string().required("Please Enter an Email").email(),
-});
- 
 export default function GiftCard2() {
+  // const [recipientInfo, setRecipientInfo] = useState(true);
+  
+  // const schema = yup.object().shape({
+  //   yourname: yup.string().required("Please Enter Your Name"),
+  //   youremail: yup.string().required("Please Enter an Email").email(),
+    // recipientname: yup.string().required("Please Enter Their Name"),
+
+    // recipientname: yup.string().when("recipientInfo", {
+    //   is: true,
+    //   then: yup.string().required(
+    //       "Please Enter Their Name"
+    //   ),
+    //   otherwise: yup.string()
+  // }),
+
+    // recipientemail: yup.string().required("Please Enter an Email").email(),
+  //   recipientemail: yup.string().when("recipientInfo", {
+  //     is: true,
+  //     then: yup.string().required(
+  //         "Please Enter Their Email"
+  //     ),
+  //     otherwise: yup.string()
+  // }),
+  // });
+
+//   old_password: yup.string().when("password", {
+//     is: value => value && value.length > 0,
+//     then: yup.string().required(
+//         "Old password is required when setting new password"
+//     ),
+//     otherwise: yup.string()
+// })
+
+
+// potential solution for conditonal validation based on a state
+
+// no more conditional schema, just recreating a schema every time recipientInfo changes
+const FormSchema = (recipientInfo) => yup.object().shape({
+  recipientname: recipientInfo ? yup.string().required("Please enter a recpient Name") : yup.string(),
+  recipientemail: recipientInfo ? yup.string().required("Please enter a recpient Email") : yup.string(),
+  yourname: yup.string().required("Please enter Your Name"),
+  youremail: yup.string().required("Please enter Your Email"),
+  
+})
+const [recipientInfo,setRecipientInfo] = useState(true);
+const [schema, setSchema] = useState(() => FormSchema(recipientInfo));
+
+// every time recipientInfo changes, recreate the schema and set it in the state
+useEffect(() => {
+  setSchema(FormSchema(recipientInfo));
+},[recipientInfo]);
+
+// return (<Formik validationSchema={schema2} />)
+
+
 
   const {register, handleSubmit, formState: { errors }} = useForm(
     {
@@ -41,7 +90,7 @@ export default function GiftCard2() {
   const [isDisabled, setIsDisabled] = useState(false);
 
 
-  const [recipientInfo, setRecipientInfo] = useState(true);
+  
   const [promoText, setPromoText] = useState("");
   const [personalMessageText, setPersonalMessageText] = useState("");
   const [sendInstantlyButton, setSendInstantlyButton] = useState(true);
@@ -271,7 +320,7 @@ export default function GiftCard2() {
                               required: true,
                             })}
                             />
-                            {/* <p className="error-message">{errors.yourName && errors.yourName.message}</p> */}
+                          {/* <p className="error-message">{errors.yourName && errors.yourName.message}</p> */}
                           <p className="error-message">{errors[input.name]?.message}</p>
                           </section>
                       </>
@@ -412,6 +461,8 @@ export default function GiftCard2() {
                 Continue
               </button>
             </form>
+            <Formik validationSchema={schema} />
         </main>
+        
     )
 }
