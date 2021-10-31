@@ -1,3 +1,4 @@
+
 const ListItems = ({item, index, itemSelect, price, setPrice, handleSelectColor, handleItemSelect, handleCustomButton, setCustomInput, setIsDisabled}) => {
   
   /* Below code was on the onClick, but because everything was running on the same render
@@ -20,7 +21,7 @@ const ListItems = ({item, index, itemSelect, price, setPrice, handleSelectColor,
   // vs 
   //  bad practice
   // onClick={myFunction()}
-
+  
     return (
       <>
       <div style={handleSelectColor(index, itemSelect, price)} 
@@ -33,6 +34,7 @@ const ListItems = ({item, index, itemSelect, price, setPrice, handleSelectColor,
     )
   };
 
+
 const makePriceItems = (items, itemSelect = false) => {
     let priceItems = items.map((item, index)=>{
         return { 
@@ -43,5 +45,5 @@ const makePriceItems = (items, itemSelect = false) => {
     })
     return priceItems
 }
-export { makePriceItems, ListItems, };
+export { makePriceItems, ListItems };
 

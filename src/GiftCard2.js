@@ -1,48 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Formik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import "react-datetime/css/react-datetime.css";
 import { useForm } from 'react-hook-form';
 import { useHistory } from "react-router-dom";
 import * as yup from 'yup';
-import DateTime from './components/DateTime';
 import { ListItems, makePriceItems } from './components/ListItems';
 import LogoSmall from './images/LogoSmall.png';
 import content from './static/content';
-
 export default function GiftCard2() {
-  // const [recipientInfo, setRecipientInfo] = useState(true);
-  
-  // const schema = yup.object().shape({
-  //   yourname: yup.string().required("Please Enter Your Name"),
-  //   youremail: yup.string().required("Please Enter an Email").email(),
-    // recipientname: yup.string().required("Please Enter Their Name"),
-
-    // recipientname: yup.string().when("recipientInfo", {
-    //   is: true,
-    //   then: yup.string().required(
-    //       "Please Enter Their Name"
-    //   ),
-    //   otherwise: yup.string()
-  // }),
-
-    // recipientemail: yup.string().required("Please Enter an Email").email(),
-  //   recipientemail: yup.string().when("recipientInfo", {
-  //     is: true,
-  //     then: yup.string().required(
-  //         "Please Enter Their Email"
-  //     ),
-  //     otherwise: yup.string()
-  // }),
-  // });
-
-//   old_password: yup.string().when("password", {
-//     is: value => value && value.length > 0,
-//     then: yup.string().required(
-//         "Old password is required when setting new password"
-//     ),
-//     otherwise: yup.string()
-// })
 
 
 // potential solution for conditonal validation based on a state
@@ -72,16 +40,18 @@ useEffect(() => {
       resolver: yupResolver(schema),
     },
   );
-
+  const history = useHistory();
   const onSubmit = (data) => {
 
-    console.log(data);
-    history.push("/CheckOut");
-    console.log(errors?.message);
+    // console.log(data);
+    history.push({
+      pathname: '/CheckOut',
+      // search: '?query=abc',
+      state: { price, personalMessageText, date}
+  });
+    
   };
-  console.log(errors);
-  
-
+  // console.log(errors);
 
   const [customInput, setCustomInput] = useState(false);
 
@@ -97,6 +67,7 @@ useEffect(() => {
   const [sendFutureButton, setSendFutureButton] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // console.log(personalMessageText)
   const items = useRef(
     [
       
@@ -124,7 +95,7 @@ useEffect(() => {
   );
   const priceItems = useRef(makePriceItems(items.current, false));
   useEffect(() => {
-    console.log(price)
+    // console.log(price)
   });
 
   const handleSelectColor = (index, itemSelect, price) => {
@@ -201,43 +172,22 @@ useEffect(() => {
     setSendInstantlyButton(false);
    }
   
-  //  const OnSubmitRedirect = (e) => {
-  //   const history = useHistory();
-  //   e.preventDefault();
-  //  history.push('/CheckOut')
-  // }
-  // function ProfileForm() {
-  //   const history = useHistory();
-  //   const onSubmitRedirect = (e) => {
-  //      e.target.reset();
-  //      history.push({
-  //         pathname:  "/CheckOut",
-  //      });
-  //   }
-  // } 
 
-  const history = useHistory();
-
-  // const handleSubmitRedirect = (e) => {
-  //   if (schema.validate({})
-  //   .catch(function(error) {
-  //       console.log(errors);
-  //     })) {return } else {
-  //     history.push({
-  //       pathname:  "/CheckOut",
-  //    });
-  //   }
+   const [date, setDate] = useState(new Date());
+  
+  //  const formatLongDate = () => (locale, date) => formatDate(date, 'dd MMM YYYY')
+   
     
-  // }
+  // const locale = 'fr-CA';
 
-  const handleSubmitRedirect = async (e) => {
-    const result = await schema.validate({});
-    console.log(result);
-    } 
-    
-
+  useEffect(() => {
+    console.log(date);
+  },[date]);
+  
+ 
     return (
         <main className="gift-cards-container">
+          
             <nav>
                 <a className="item-1" href="/"><img src={LogoSmall }alt="Retro-Zone-Home-Button" /></a>
                 <a className="item-2" href=""><p>Order an eGift card</p></a>
@@ -248,7 +198,7 @@ useEffect(() => {
                 <p>Get a voucher for yourself or gift one to a friend</p>
                 <div className="gift-card-img-container"></div>
             </div>
-            {/* (event) => handleSubmitRedirect(event) */}
+            
             <form onSubmit={handleSubmit(onSubmit) } className="payment-container">
               <label>EGIFT CARD AMOUNT</label>
               <section className="price-buttons">
@@ -307,11 +257,11 @@ useEffect(() => {
               <article >
 
                 {/* your name input  */}
-                {content.yourName.map((input, key)=>{
+                {content.yourName.map((input, index)=>{
                 return (
                       <>
-                          <section>
-                            <p key={key}></p>
+                          <section key={index}>
+                            <p></p>
                             <label>{input.label}</label>
                             <input name={input.name}
                             type={input.type}
@@ -328,11 +278,11 @@ useEffect(() => {
                 })}
 
                 {/* Your Email Input */}
-                {content.yourEmail.map((input, key)=>{
+                {content.yourEmail.map((input, index)=>{
                 return (
                       <>
-                          <section>
-                            <p key={key}></p>
+                          <section key={index}>
+                            <p></p>
                             <label>{input.label}</label>
                             <input 
                             name={input.name}
@@ -368,11 +318,11 @@ useEffect(() => {
               <div className="user-form-flexbox">
               <article >
                 {/* Recipient Name Input */}
-                {content.recipientName.map((input, key)=>{
+                {content.recipientName.map((input, index)=>{
                 return (
                       <>
-                          <section>
-                            <p key={key}></p>
+                          <section key={index}>
+                            <p ></p>
                             <label>{input.label}</label>
                             <input 
                             // autoFocus="false"
@@ -391,14 +341,13 @@ useEffect(() => {
                 })}
 
                 {/* Recipient Email Input */}
-                {content.recipientEmail.map((input, key)=>{
+                {content.recipientEmail.map((input, index)=>{
                 return (
                       <>
-                          <section>
-                            <p key={key}></p>
+                          <section key={index}>
+                            <p ></p>
                             <label>{input.label}</label>
                             <input 
-                            // autoFocus="false"
                             name={input.name}
                             type={input.type}
                             placeholder={input.placeholder}
@@ -448,7 +397,16 @@ useEffect(() => {
 
             {sendFutureButton &&  (
               <section className="calendar">
-                <DateTime />
+                 <Calendar
+                  onChange={(e) => {
+                    const date = new Date(e);
+                    const formattedDate = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+                    setDate(formattedDate)
+                    }}
+                  date={date}
+                  maxDate={new Date('2022-10-31')}
+                  
+                        />
               </section>
             )}
 
@@ -456,7 +414,6 @@ useEffect(() => {
               className="checkout-button" 
               type="submit"
               disabled={errors.length >= 1}
-              // onClick={handleSubmitRedirect}
               >
                 Continue
               </button>

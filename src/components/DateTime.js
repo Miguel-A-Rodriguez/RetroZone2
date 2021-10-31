@@ -6,6 +6,7 @@ export default function DateTime() {
 
     const [value, onChange] = useState(new Date());
     console.log(value);
+
     return (
         <div>
         <Calendar
