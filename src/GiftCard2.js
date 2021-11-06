@@ -31,6 +31,12 @@ useEffect(() => {
   setSchema(FormSchema(recipientInfo));
 },[recipientInfo]);
 
+useEffect(() => {
+  const date = new Date();
+  const formattedDate = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+  setDate(formattedDate)
+},[]);
+
 // return (<Formik validationSchema={schema2} />)
 
 
@@ -47,7 +53,7 @@ useEffect(() => {
     history.push({
       pathname: '/CheckOut',
       // search: '?query=abc',
-      state: { price, personalMessageText, date}
+      state: { price, personalMessageText, date, yourName, yourEmail, recipientName, recipientEmail}
   });
     
   };
@@ -60,13 +66,18 @@ useEffect(() => {
   const [isDisabled, setIsDisabled] = useState(false);
 
 
-  
+  const [yourName, setYourName] = useState("");
+  const [yourEmail, setYourEmail] = useState("");
+  const [recipientName, setRecipientName] = useState("");
+  const [recipientEmail, setRecipientEmail] = useState("");
+
   const [promoText, setPromoText] = useState("");
   const [personalMessageText, setPersonalMessageText] = useState("");
   const [sendInstantlyButton, setSendInstantlyButton] = useState(true);
   const [sendFutureButton, setSendFutureButton] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // console.log(yourName)
   // console.log(personalMessageText)
   const items = useRef(
     [
@@ -175,10 +186,10 @@ useEffect(() => {
 
    const [date, setDate] = useState(new Date());
   
-  //  const formatLongDate = () => (locale, date) => formatDate(date, 'dd MMM YYYY')
-   
-    
-  // const locale = 'fr-CA';
+  //  function handleChange(event) {
+  //   console.log(event.target.value);
+  // }
+  console.log(yourName);
 
   useEffect(() => {
     console.log(date);
@@ -263,7 +274,9 @@ useEffect(() => {
                           <section key={index}>
                             <p></p>
                             <label>{input.label}</label>
-                            <input name={input.name}
+                            <input 
+                            onInput={(event) => setYourName(event.target.value)}
+                            name={input.name}
                             type={input.type}
                             placeholder={input.placeholder}
                             {...register(input.name, {
@@ -285,6 +298,7 @@ useEffect(() => {
                             <p></p>
                             <label>{input.label}</label>
                             <input 
+                            onInput={(event) => setYourEmail(event.target.value)}
                             name={input.name}
                             type={input.type}
                             placeholder={input.placeholder}
@@ -326,6 +340,7 @@ useEffect(() => {
                             <label>{input.label}</label>
                             <input 
                             // autoFocus="false"
+                            onInput={(event) => setRecipientName(event.target.value)}
                             name={input.name}
                             type={input.type}
                             placeholder={input.placeholder}
@@ -348,6 +363,7 @@ useEffect(() => {
                             <p ></p>
                             <label>{input.label}</label>
                             <input 
+                            onInput={(event) => setRecipientEmail(event.target.value)}
                             name={input.name}
                             type={input.type}
                             placeholder={input.placeholder}
@@ -398,10 +414,14 @@ useEffect(() => {
             {sendFutureButton &&  (
               <section className="calendar">
                  <Calendar
+                //  onChange={setDate}
                   onChange={(e) => {
                     const date = new Date(e);
-                    const formattedDate = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
-                    setDate(formattedDate)
+                    const formattedDate = date.toISOString(); // "2021-01-11T12301239"
+                  // https://en.wikipedia.org/wiki/ISO_8601
+                  
+                  // date -> new Date()
+                  setDate(formattedDate)
                     }}
                   date={date}
                   maxDate={new Date('2022-10-31')}
