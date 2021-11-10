@@ -886,9 +886,7 @@ padding-bottom: 70px;
     max-height: 30px ;
 }
 
-.checkout-container .checkout-title{
-    text-align: center;
-}
+
 .checkout-container .checkout-title h1, h2{
     text-align: center;
     margin-bottom: 10px;
@@ -940,7 +938,7 @@ max-width: 500px;
 
     .payment-inputs__container .jnYdMq{
         width: 100%;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
     }
     .payment-warning p{
         margin-bottom: 30px;
@@ -955,6 +953,8 @@ max-width: 500px;
     }
 .payment-submit-button{
         background-color: #006aff;
+        margin-top: 20px;
+        margin-bottom: 20px;
         color: white;
         width: 100%;
         padding-top: 20px;
@@ -1076,4 +1076,16 @@ max-width: 500px;
     text-align: left;
     width: 32ch;
     line-height: 26px;
+}
+
+/* auto email css */
+.auto-email-form{
+    display: flex;
+    flex-direction: column;
+}
+.auto-email-form label, input{
+    margin-bottom: 10px;
+}
+.hidden{
+    visibility: hidden;
 }

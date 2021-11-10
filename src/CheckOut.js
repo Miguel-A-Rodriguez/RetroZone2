@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 import LogoSmall from '../src/images/LogoSmall.png';
+import { ContactUs } from './components/AutoEmail';
 import PaymentInputs from './components/PaymentInputs';
-  
 export default function CheckOut() {
     let history = useHistory();
 
@@ -27,7 +27,14 @@ export default function CheckOut() {
     const userEmail = (location.state.yourEmail);
     const recieverName = (location.state.recipientName);
     const recieverEmail = (location.state.recipientEmail);
+    const price = (location.state.price);
+    const personalMessage = (location.state.personalMessageText);
 
+    const editFunction = () => {
+        history.push({
+            pathname: '/GiftCard2',
+        });
+    }
     // Intl.DateTimeFormat
     // Jan 1, 2011
 
@@ -58,7 +65,14 @@ export default function CheckOut() {
                     <span class="payment-inputs__container">
                         <PaymentInputs/>
                     </span>
-
+                    <ContactUs
+                    yourName={userName}
+                    yourEmail={userEmail}
+                    recipientEmail={recieverEmail}
+                    recipientName={recieverName}
+                    price={price}
+                    personalMessage={personalMessage}
+                    />
                     <div class="payment-warning">
                         <p>
                             By purchasing an eGift Card you agree to Square’s <b>Give & Get Local Terms</b>, <b>Privacy Policy</b>, and <b>E-Sign Consent</b>.
@@ -67,14 +81,12 @@ export default function CheckOut() {
                              By completing this purchase, I acknowledge that I am liable for any loss associated with the gift card purchase in the event that the seller is unable to fulfill the goods or services.
                         </p>
                     </div>
-                    
-                    <button className="payment-submit-button" type="submit">Pay with Card</button>
                 </div>
 
                 <div className="order-details__container">
                     <article className="order-details__top-content">
                         <span>ORDER DETAILS</span>
-                        <p><b>EDIT</b></p>
+                        <p onClick={editFunction}><b>EDIT</b></p>
                     </article>
 
                     

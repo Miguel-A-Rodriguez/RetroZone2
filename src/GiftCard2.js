@@ -50,11 +50,11 @@ useEffect(() => {
   const onSubmit = (data) => {
 
     // console.log(data);
-    history.push({
-      pathname: '/CheckOut',
-      // search: '?query=abc',
-      state: { price, personalMessageText, date, yourName, yourEmail, recipientName, recipientEmail}
-  });
+      history.push({
+        pathname: '/CheckOut',
+        // search: '?query=abc',
+        state: { price, personalMessageText, date, yourName, yourEmail, recipientName, recipientEmail}
+    });
     
   };
   // console.log(errors);
