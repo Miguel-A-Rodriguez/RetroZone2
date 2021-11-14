@@ -1,5 +1,14 @@
+import { useRef } from "react";
 
-const ListItems = ({item, index, itemSelect, price, setPrice, handleSelectColor, handleItemSelect, handleCustomButton, setCustomInput, setIsDisabled}) => {
+const makePriceItems = (items, itemSelect = false) => {
+  return items.map((item, index)=>({ 
+    itemSelect: itemSelect,
+    item: item,
+    index: index
+  }))
+}
+
+const ListItems = ({item, items, index, itemSelect, price, setPrice, handleItemSelect, selected, handleCustomButton, setCustomInput, setIsDisabled}) => {
   
   /* Below code was on the onClick, but because everything was running on the same render
   handleCustomButton only got the current state and not the changed state due to all the functions being
@@ -11,23 +20,22 @@ const ListItems = ({item, index, itemSelect, price, setPrice, handleSelectColor,
   // setIsDisabled(false); setPromoText("")
   const onClick = () => {
     setPrice(item.price);
-    handleItemSelect(index);
+    handleItemSelect();
     handleCustomButton(index, setCustomInput);
     setIsDisabled(false);
     console.log(index, itemSelect, item.price)
   }
-  // good practice
-  // onClick={myFunction} 
-  // vs 
-  //  bad practice
-  // onClick={myFunction()}
+
+
+
+const priceItems = useRef(makePriceItems(items.current, false));
+
+
   
     return (
       <>
-      <div style={handleSelectColor(index, itemSelect, price)} 
-           onClick={onClick}> 
+      <div style={{backgroundColor: selected ? '#000' : "#fff", color: selected ? "#fff" : "#000"}} onClick={onClick}> 
         <span>{item.price == "Custom" ? `${item.price}` : `$${item.price}.00`}</span>
-        
       
       </div>
       </>
@@ -35,15 +43,6 @@ const ListItems = ({item, index, itemSelect, price, setPrice, handleSelectColor,
   };
 
 
-const makePriceItems = (items, itemSelect = false) => {
-    let priceItems = items.map((item, index)=>{
-        return { 
-        itemSelect: itemSelect,
-        item: item,
-        index: index
-        }
-    })
-    return priceItems
-}
+
 export { makePriceItems, ListItems };
 

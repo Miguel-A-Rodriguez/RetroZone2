@@ -722,8 +722,8 @@ padding-bottom: 70px;
 }
 .promo-code-button{
     background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
+    border: none;
+    color: #2996cc;
     width: 12%;
     margin-left: auto;
     margin-right: 5px;
@@ -975,6 +975,7 @@ max-width: 500px;
 .order-details__container .order-details__top-content{
     display: flex;
     justify-content: space-between;
+    min-width: 350px;
 }
 .order-details__container .order-details__top-content b{
     font-weight: normal;
@@ -1086,6 +1087,17 @@ max-width: 500px;
 .auto-email-form label, input{
     margin-bottom: 10px;
 }
-.hidden{
+.auto-email-form input{
+    min-height: 25px;
+    border-radius: 5px;
+    border: rgb(190, 190, 190) 1px solid;
+}
+.auto-email-form textarea{
+    border-radius: 5px;
+    border: rgb(190, 190, 190) 1px solid;
+}
+.auto-email-form .hidden-input{
     visibility: hidden;
+    outline: none;
+    border: none;
 }

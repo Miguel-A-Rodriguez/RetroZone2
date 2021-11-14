@@ -14,6 +14,7 @@ export default function CheckOut() {
     useEffect(() => {
        console.log(location.pathname); // result: '/secondpage'
        console.log(location.state.price); // result: 'some_value'
+       console.log(location.state.discountedPrice); // result: 'some_value'
        console.log(location.state.personalMessageText); // result: 'some_value'
        console.log(location.state.date); // result: 'some_value'
        console.log(location.state.yourName); // result: 'some_value'
@@ -27,7 +28,7 @@ export default function CheckOut() {
     const userEmail = (location.state.yourEmail);
     const recieverName = (location.state.recipientName);
     const recieverEmail = (location.state.recipientEmail);
-    const price = (location.state.price);
+    const price = (location.state.discountedPrice);
     const personalMessage = (location.state.personalMessageText);
 
     const editFunction = () => {
@@ -112,7 +113,6 @@ export default function CheckOut() {
                                 <h4>{`$${location.state.price}.00`}</h4>
                                 <h3>Amount you pay</h3>
                             </div>
-                            {/* need border bottom six pixels with #f8f4f4 */}
                         </section>
 
                         <div className="recipient-credentials">

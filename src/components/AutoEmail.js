@@ -34,9 +34,9 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
       <label>Recipient Email</label>
       <input type="email" name="email" defaultValue={recipientEmail ? recipientEmail : yourEmail} />
 
-      <div className="hidden">
-        <label>GiftCard Value</label>
-        <input type="text" name="price" defaultValue={`$${stringPrice}.00`}/>
+      <div className="hidden-input">
+        <label>GiftCard Value: </label>
+        <input className="hidden-input" type="text" name="price" defaultValue={`$${stringPrice}.00`} readonly="readonly" />
       </div>
 
       <label> Personal Message</label>
@@ -45,5 +45,3 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
     </form>
   );
 };
-
-// need to fix email template to send to dynamic emails

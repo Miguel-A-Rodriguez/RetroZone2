@@ -37,8 +37,6 @@ useEffect(() => {
   setDate(formattedDate)
 },[]);
 
-// return (<Formik validationSchema={schema2} />)
-
 
 
   const {register, handleSubmit, formState: { errors }} = useForm(
@@ -53,7 +51,7 @@ useEffect(() => {
       history.push({
         pathname: '/CheckOut',
         // search: '?query=abc',
-        state: { price, personalMessageText, date, yourName, yourEmail, recipientName, recipientEmail}
+        state: { price, discountedPrice, personalMessageText, date, yourName, yourEmail, recipientName, recipientEmail}
     });
     
   };
@@ -62,7 +60,8 @@ useEffect(() => {
   const [customInput, setCustomInput] = useState(false);
 
   const [price, setPrice] = useState(20);
-  const [promoCounter, setPromoCounter] = useState(0);
+  const [discountedPrice, setDiscountedPrice] = useState(price);
+
   const [isDisabled, setIsDisabled] = useState(false);
 
 
@@ -104,24 +103,14 @@ useEffect(() => {
       },
     ]
   );
+  
   const priceItems = useRef(makePriceItems(items.current, false));
   useEffect(() => {
     // console.log(price)
   });
 
-  const handleSelectColor = (index, itemSelect, price) => {
-    if (price === 20 && index === 0) {
-      return {backgroundColor: "black", color: "white"} 
-    } else if (itemSelect && index === 1) {
-      return {backgroundColor: "black", color: "white"} 
-    } else if (itemSelect && index === 2) {
-      return {backgroundColor: "black", color: "white"} 
-    } else if (itemSelect && index === 3) {
-      return {backgroundColor: "black", color: "white"} 
-    } else if (itemSelect && index === 4) {
-      return {backgroundColor: "black", color: "white"} 
-  }
-}
+  
+  
   const handleCustomButton = (index, setCustomInput) => {
     if (index === 4){
      setCustomInput(true)
@@ -129,17 +118,6 @@ useEffect(() => {
      setCustomInput(false)
     }
   } 
-
-
-  const handleItemSelect = (index) => {
-    // this line below sets all of priceItems' itemSelect property to false before changing the clickd item to true
-    priceItems.current.forEach(({index, item, itemSelect},i) => {
-      priceItems.current[i].itemSelect = false
-    });
-    priceItems.current[index].itemSelect = true; 
-  }
-  
-  
 
   const handleCustomPrice = (e) =>{
     const customValue = +e.target.value
@@ -173,6 +151,9 @@ useEffect(() => {
           console.log(price);
         };
    };
+
+
+   
   
    const handleInstantButton = () => {
     setSendInstantlyButton(true);
@@ -185,6 +166,8 @@ useEffect(() => {
   
 
    const [date, setDate] = useState(new Date());
+   const [tabIndex, setTabIndex] = useState(0);
+
   
   //  function handleChange(event) {
   //   console.log(event.target.value);
@@ -194,6 +177,10 @@ useEffect(() => {
   useEffect(() => {
     console.log(date);
   },[date]);
+
+  const MyProps = {
+    prop1: "123123",
+  }
   
  
     return (
@@ -214,16 +201,18 @@ useEffect(() => {
               <label>EGIFT CARD AMOUNT</label>
               <section className="price-buttons">
                 <span className="list-items">
-                  {priceItems.current.map(({index, item, itemSelect},i) => (
+                  {priceItems.current.map(({index, item, itemSelect}, i) => (
                     <ListItems
                       item={item}
                       index={index}
-                      key={"item" + i}
+                      key={"item" + index}
                       itemSelect={itemSelect}
                       price = {price}
+                      selected={tabIndex === i}
                       setPrice={setPrice}
-                      handleSelectColor={handleSelectColor}
-                      handleItemSelect={handleItemSelect}
+                      items={items}
+                      handleItemSelect={() => setTabIndex(i)}
+
                       handleCustomButton={handleCustomButton}
                       setCustomInput={setCustomInput}
                       setIsDisabled={setIsDisabled}
@@ -258,7 +247,7 @@ useEffect(() => {
                     className="promo-code-button"
                     type="button"
                     onClick={handlePromoCode}
-                    disabled={isDisabled}
+                    disabled={promoText === "" ? true : isDisabled} 
                 >
                      Apply
                 </button>
@@ -382,14 +371,19 @@ useEffect(() => {
               </article>
             </div>
            )}
-              <label className="personal-msg-txt">PERSONAL MESSAGE <u>(OPTIONAL)</u></label>
-              <textarea 
-              name="" 
-              id="" 
-              onChange={(event) => setPersonalMessageText(event.target.value)}
-              cols="30" 
-              rows="4">
-              </textarea>
+
+            {recipientInfo &&  (
+                <>
+                  <label className="personal-msg-txt">PERSONAL MESSAGE <u>(OPTIONAL)</u></label>
+                  <textarea 
+                  name="" 
+                  id="" 
+                  onChange={(event) => setPersonalMessageText(event.target.value)}
+                  cols="30" 
+                  rows="4">
+                  </textarea>
+                </>
+              )}
               {/* try putting functions in the onClicks that set the states */}
               <label>DELIVERY</label>
               <div className="delivery-buttons-flexbox">
