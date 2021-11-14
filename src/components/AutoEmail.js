@@ -10,6 +10,7 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
     emailjs.sendForm('service_gxh7mwe', 'template_6a3ga5m', form.current, 'user_1jnLkN1CAAAQSJkNQTduj')
       .then((result) => {
           console.log(result.text);
+          console.log(stringPrice);
       }, (error) => {
           console.log(error.text);
       });

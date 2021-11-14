@@ -8,7 +8,7 @@ const makePriceItems = (items, itemSelect = false) => {
   }))
 }
 
-const ListItems = ({item, items, index, itemSelect, price, setPrice, handleItemSelect, selected, handleCustomButton, setCustomInput, setIsDisabled}) => {
+const ListItems = ({item, items, index, itemSelect, setPromoCodeState, price, setPrice, setDiscountedPrice, handleItemSelect, selected, handleCustomButton, setCustomInput, setIsDisabled}) => {
   
   /* Below code was on the onClick, but because everything was running on the same render
   handleCustomButton only got the current state and not the changed state due to all the functions being
@@ -20,6 +20,8 @@ const ListItems = ({item, items, index, itemSelect, price, setPrice, handleItemS
   // setIsDisabled(false); setPromoText("")
   const onClick = () => {
     setPrice(item.price);
+    setDiscountedPrice(item.price);
+    setPromoCodeState(false);
     handleItemSelect();
     handleCustomButton(index, setCustomInput);
     setIsDisabled(false);

@@ -60,7 +60,7 @@ useEffect(() => {
   const [customInput, setCustomInput] = useState(false);
 
   const [price, setPrice] = useState(20);
-  const [discountedPrice, setDiscountedPrice] = useState(price);
+  const [discountedPrice, setDiscountedPrice] = useState(20);
 
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -74,10 +74,9 @@ useEffect(() => {
   const [personalMessageText, setPersonalMessageText] = useState("");
   const [sendInstantlyButton, setSendInstantlyButton] = useState(true);
   const [sendFutureButton, setSendFutureButton] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [promoCodeState, setPromoCodeState] = useState(false)
 
-  // console.log(yourName)
-  // console.log(personalMessageText)
+
   const items = useRef(
     [
       
@@ -104,6 +103,8 @@ useEffect(() => {
     ]
   );
   
+  const [tabIndex, setTabIndex] = useState(0);
+  
   const priceItems = useRef(makePriceItems(items.current, false));
   useEffect(() => {
     // console.log(price)
@@ -121,8 +122,9 @@ useEffect(() => {
 
   const handleCustomPrice = (e) =>{
     const customValue = +e.target.value
-    if (customValue <= 2001 || customValue > 0){
-    setPrice(customValue) 
+    if (customValue <= 2001 || customValue > 19){
+    setPrice(customValue);
+    setDiscountedPrice(customValue) 
     } else {
       setPrice(0);
     }
@@ -136,23 +138,26 @@ useEffect(() => {
 
 
   const handlePromoCode = () =>{
-    console.log(promoText)
+    
     if (promoText === "Retro"){
-        setPrice(price * 0.90);
+        setDiscountedPrice(discountedPrice * 0.90);
         setIsDisabled(true); 
-        console.log(price);
+        setPromoCodeState(true);
       } else if (promoText === "Game"){
-        setPrice(price * 0.85); 
-        setIsDisabled(true);
-        console.log(price);
-      } else if (promoText === "Party"){
-          setPrice(price * 0.80); 
+          setDiscountedPrice(discountedPrice * 0.85); 
           setIsDisabled(true);
-          console.log(price);
-        };
+          setPromoCodeState(true);
+      } else if (promoText === "Party"){
+          setDiscountedPrice(discountedPrice * 0.80); 
+          setIsDisabled(true);
+          setPromoCodeState(true);
+        } else {
+          setPromoCodeState(false);
+        }
    };
 
-
+console.log("Discounted Price:",discountedPrice);
+console.log("Price:",price);
    
   
    const handleInstantButton = () => {
@@ -163,24 +168,15 @@ useEffect(() => {
     setSendFutureButton(true);
     setSendInstantlyButton(false);
    }
-  
+   
 
    const [date, setDate] = useState(new Date());
-   const [tabIndex, setTabIndex] = useState(0);
 
   
-  //  function handleChange(event) {
-  //   console.log(event.target.value);
-  // }
-  console.log(yourName);
 
   useEffect(() => {
     console.log(date);
   },[date]);
-
-  const MyProps = {
-    prop1: "123123",
-  }
   
  
     return (
@@ -208,11 +204,12 @@ useEffect(() => {
                       key={"item" + index}
                       itemSelect={itemSelect}
                       price = {price}
+                      setDiscountedPrice = {setDiscountedPrice}
                       selected={tabIndex === i}
                       setPrice={setPrice}
                       items={items}
                       handleItemSelect={() => setTabIndex(i)}
-
+                      setPromoCodeState = {setPromoCodeState}
                       handleCustomButton={handleCustomButton}
                       setCustomInput={setCustomInput}
                       setIsDisabled={setIsDisabled}
@@ -222,19 +219,23 @@ useEffect(() => {
                 </span>
               </section>
               {customInput &&  (
+                <>
+                <p style={price > 2001 || price < 20 || price === "Custom" ? {color: "red"} : {display: 'none'}}>Please Enter a number greater than 19 and less than 2001</p>
                 <input 
                     type="number" 
-                    style={price > 2001 || price < 1 ? {border: "2px solid #FF7F7F", outline: "none", borderRadius: "3px"} : {border: "2px solid green", outline: "none", borderRadius: "3px"}}
-                    min="1" max="2000" 
-                    placeholder=" $1 to $2,000"
+                    style={price > 2001 || price < 20 || price === "Custom" ? {border: "2px solid #FF7F7F", outline: "none", borderRadius: "3px"} 
+                    : {border: "2px solid green", outline: "none", borderRadius: "3px"}}
+                    min="20" max="2000" 
+                    placeholder=" $20 to $2,000"
                     value ={price ? price : ""} 
                     onChange = {handleCustomPrice}
                     onKeyDown={handleKeyDown}
                     />
+                </>
                 )}
 
               <label>PROMOTION CODE</label>
-              
+                <p style={promoCodeState === true ? {color: "green"} : {display: 'none'} }>Your Price is now {`$${discountedPrice}.00`}!</p>
                 <input
                     className="promo-code-input"
                     disabled={isDisabled}
@@ -427,7 +428,7 @@ useEffect(() => {
               <button 
               className="checkout-button" 
               type="submit"
-              disabled={errors.length >= 1}
+              disabled={price < 20 || price === "Custom" ? true: false }
               >
                 Continue
               </button>

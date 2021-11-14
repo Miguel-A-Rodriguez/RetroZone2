@@ -28,7 +28,7 @@ export default function CheckOut() {
     const userEmail = (location.state.yourEmail);
     const recieverName = (location.state.recipientName);
     const recieverEmail = (location.state.recipientEmail);
-    const price = (location.state.discountedPrice);
+    const price = (location.state.price);
     const personalMessage = (location.state.personalMessageText);
 
     const editFunction = () => {
@@ -110,7 +110,7 @@ export default function CheckOut() {
 
                         <section className="pay-amount__flex">
                             <div className="amount-pay__container">
-                                <h4>{`$${location.state.price}.00`}</h4>
+                                <h4>{`$${location.state.discountedPrice}.00`}</h4>
                                 <h3>Amount you pay</h3>
                             </div>
                         </section>
