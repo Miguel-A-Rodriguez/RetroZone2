@@ -1,8 +1,12 @@
 import emailjs from 'emailjs-com';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, price, personalMessage}) => {
+
+
   const form = useRef();
+  const [successMessage, setSucessMessage] = useState(false);
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -11,11 +15,14 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
       .then((result) => {
           console.log(result.text);
           console.log(stringPrice);
+          setSucessMessage(true);
       }, (error) => {
           console.log(error.text);
       });
+
       e.target.reset();
   };
+
  const stringPrice = price.toString();
 
  if (stringPrice.substring) {
@@ -25,7 +32,12 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
   }
 
   return (
+    <>
+     <p style={successMessage ? {color: "green", marginBottom:"15px"}: {display: "none"}}>Your Purchase was successful and your GiftCard was sent via Email!</p>
     <form ref={form} onSubmit={sendEmail} className="auto-email-form">
+
+
+
       <label> Sender Name</label>
       <input type="text" name="from_name" defaultValue={yourName} />
 
@@ -44,5 +56,7 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
       <textarea name="message" defaultValue={personalMessage}/>
       <input className="payment-submit-button" type="submit" value="Pay With Card" />
     </form>
+    
+    </>
   );
 };
