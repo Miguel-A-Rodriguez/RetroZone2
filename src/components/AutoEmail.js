@@ -1,7 +1,7 @@
 import emailjs from 'emailjs-com';
 import React, { useRef, useState } from 'react';
 
-export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, price, personalMessage}) => {
+export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, price, personalMessage, cardNumber, expiryDate, cvcNumber}) => {
 
 
   const form = useRef();
@@ -10,7 +10,10 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+    if(cardNumber === "" || expiryDate === "" || cvcNumber === "") {
+      return console.log("Incomplete Card Number")
+    } else {
+    // cardNumber || expiryDate || cvcNumber ? " " return
     emailjs.sendForm('service_gxh7mwe', 'template_6a3ga5m', form.current, 'user_1jnLkN1CAAAQSJkNQTduj')
       .then((result) => {
           console.log(result.text);
@@ -21,6 +24,7 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
       });
 
       e.target.reset();
+    };
   };
 
  const stringPrice = price.toString();

@@ -940,6 +940,10 @@ max-width: 500px;
         width: 100%;
         margin-bottom: 30px;
     }
+    .payment-inputs__container-error .jnYdMq{
+        border: 2px solid red;
+        border-radius: 5px;
+    }
     .payment-warning p{
         margin-bottom: 30px;
         line-height: 24px;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 import LogoSmall from '../src/images/LogoSmall.png';
 import { ContactUs } from './components/AutoEmail';
@@ -36,12 +36,11 @@ export default function CheckOut() {
             pathname: '/GiftCard2',
         });
     }
-    // Intl.DateTimeFormat
-    // Jan 1, 2011
+    
+    const [ cardNumber, setCardNumber ] = useState("");
+    const [ expiryDate, setExpiryDate] = useState("");
+    const [ cvcNumber, setCvcNumber] = useState("");
 
-    // Intl.DateTimeFormat.format(ACCEPTS DATE OBJECT)
-    // 例　Intl.DateTimeFormat.format(new Date())
-    // Intl.DateTimeFormat.format(new Date('2021-08-11'))
     return (
         <main className="checkout-container">
             <nav>
@@ -63,8 +62,19 @@ export default function CheckOut() {
                         <h2>Or</h2>
                     </div>
 
-                    <span class="payment-inputs__container">
-                        <PaymentInputs/>
+                    <span className={cardNumber === "" || expiryDate === "" || cvcNumber === "" ? "payment-inputs__container-error" : "payment-inputs__container"}>
+                            <PaymentInputs
+                            
+                            cardNumber = {cardNumber}
+                            setCardNumber = {setCardNumber}
+                            expiryDate = {expiryDate}
+                            setExpiryDate = {setExpiryDate}
+                            cvcNumber = {cvcNumber}
+                            setCvcNumber = {setCvcNumber}
+                                />
+                
+                                 <p style={cardNumber === "" || expiryDate === "" || cvcNumber == "" ?{color: "red", marginBottom: "10px", marginTop: "10px"} : {display: "none"} }>Please enter your card details</p>
+                        
                     </span>
                     <ContactUs
                     yourName={userName}
@@ -73,6 +83,10 @@ export default function CheckOut() {
                     recipientName={recieverName}
                     price={price}
                     personalMessage={personalMessage}
+
+                    cardNumber = {cardNumber}
+                    expiryDate = {expiryDate}
+                    cvcNumber = {cvcNumber}
                     />
                     <div class="payment-warning">
                         <p>
