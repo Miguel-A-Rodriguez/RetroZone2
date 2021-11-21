@@ -10,10 +10,10 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
 
   const sendEmail = (e) => {
     e.preventDefault();
-    if(cardNumber === "" || expiryDate === "" || cvcNumber === "") {
+    if(cardNumber === "" || expiryDate === "" || cvcNumber === "" || cardNumber.length < 19 || cvcNumber.length < 3 || expiryDate.length < 7) {
       return console.log("Incomplete Card Number")
     } else {
-    // cardNumber || expiryDate || cvcNumber ? " " return
+    
     emailjs.sendForm('service_gxh7mwe', 'template_6a3ga5m', form.current, 'user_1jnLkN1CAAAQSJkNQTduj')
       .then((result) => {
           console.log(result.text);
@@ -29,11 +29,6 @@ export const ContactUs = ({yourName, yourEmail, recipientEmail, recipientName, p
 
  const stringPrice = price.toString();
 
- if (stringPrice.substring) {
-   console.log('stringPrice is a string!')
-  } else{
-  console.log("stringPrice is not a string!")
-  }
 
   return (
     <>

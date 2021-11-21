@@ -19,8 +19,8 @@ export default function CheckOut() {
        console.log(location.state.date); // result: 'some_value'
        console.log(location.state.yourName); // result: 'some_value'
        console.log(location.state.yourEmail); // result: 'some_value'
-       console.log(location.state.recipientName); // result: 'some_value'
-       console.log(location.state.recipientEmail); // result: 'some_value'
+   //    console.log(location.state.recipientName); // result: 'some_value'
+    //  console.log(location.state.recipientEmail); // result: 'some_value'
     }, [location]);
 
     const date = (location.state.date);
@@ -62,7 +62,7 @@ export default function CheckOut() {
                         <h2>Or</h2>
                     </div>
 
-                    <span className={cardNumber === "" || expiryDate === "" || cvcNumber === "" ? "payment-inputs__container-error" : "payment-inputs__container"}>
+                    <span className={cardNumber === "" || expiryDate === "" || cvcNumber === "" || cardNumber.length < 19 || cvcNumber.length < 3 || expiryDate.length < 7 ? "payment-inputs__container-error" : "payment-inputs__container"}>
                             <PaymentInputs
                             
                             cardNumber = {cardNumber}
@@ -73,7 +73,7 @@ export default function CheckOut() {
                             setCvcNumber = {setCvcNumber}
                                 />
                 
-                                 <p style={cardNumber === "" || expiryDate === "" || cvcNumber == "" ?{color: "red", marginBottom: "10px", marginTop: "10px"} : {display: "none"} }>Please enter your card details</p>
+                     <p style={cardNumber === "" || expiryDate === "" || cvcNumber == ""  || cardNumber.length < 19 || cvcNumber.length < 3 || expiryDate.length < 7  ?{color: "red", marginBottom: "10px", marginTop: "10px"} : {display: "none"} }>Please enter your card details</p>
                         
                     </span>
                     <ContactUs

@@ -14,19 +14,31 @@ export default function PaymentInputs({cardNumber, setCardNumber, expiryDate, se
   
   
   const handleCardNumber = (e) => {
-     setCardNumber(e.target.value);
+     let value = e.target.value;
+     let crdNum = value.toString();
+     setCardNumber(crdNum);
+    console.log(!isNaN(crdNum)); // true if its a number, false if not
+    console.log(crdNum.length)
   }
-  console.log(cardNumber);
+ 
 
   const handleExpiryNumber = (e) => {
-    setExpiryDate(e.target.value);
+    let value = e.target.value;
+    let expNum = value.toString();
+     setExpiryDate(expNum);
+    console.log(!isNaN(expNum)); // true if its a number, false if not
+    console.log(expNum.length)
  }
- console.log(expiryDate);
+ 
+ 
 
  const handleCvcNumber = (e) => {
-  setCvcNumber(e.target.value);
+  let value = e.target.value;
+  let cvNum = value.toString();
+  setCvcNumber(cvNum);
+  console.log(!isNaN(cvNum)); // true if its a number, false if not
+  console.log(cvNum.length)
 }
-console.log(cvcNumber);
   
   return (
     <>
