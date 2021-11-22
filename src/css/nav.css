@@ -53,5 +53,12 @@ header nav{
 }
 header nav a{
     text-decoration: none;
+    font-size: 1.5vw;
     color: #eb05a2;
 }
+
+@media only screen and (max-width: 799px) {
+    header nav a {
+     display: none;
+    }
+  }

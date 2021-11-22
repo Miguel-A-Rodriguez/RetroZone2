@@ -7,6 +7,7 @@ import "../src/css/main.css";
 import "../src/css/nav.css";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
+
 const Home = () => {
 
 const photos = [
@@ -56,7 +57,9 @@ const settings = {
   className: "slides"
 };
     return (
+      <>
         <body>
+        
            <Nav/>
 
             <section className="kv-container">
@@ -65,18 +68,18 @@ const settings = {
             <h1>Beer <b>-</b> Wine <b>-</b> Nostalgia</h1>
             </section>
 
-      <section className="kv-slider">
-  
-          <Slider {...settings}>
-            {photos.map((photo) => {
-              return(
-                <div>
-                  <img width="100%" src={photo.url}/>
-                </div>
-                )
-            })}
-          </Slider>
-       </section>
+            <section className="kv-slider">
+        
+                <Slider {...settings}>
+                  {photos.map((photo) => {
+                    return(
+                      <div>
+                        <img width="100%"  height="700px" src={photo.url}/>
+                      </div>
+                      )
+                  })}
+                </Slider>
+            </section>
             
 
            <section className="bottom-info">
@@ -103,8 +106,10 @@ const settings = {
                     <span>Sunday 12:00pm - 5:00pm</span>
                 </div>
             </section>
-         <Footer/>
+          <Footer/>  
+        
         </body>
+        </>
     )
 }
 

@@ -5,6 +5,30 @@
 @import "~slick-carousel/slick/slick.css"; */
 
 /* Chrome, Safari, Edge, Opera */
+@media only screen and (min-width: 800px) {
+    .sidebar{
+        display: none;
+    }    
+}
+
+*{
+    font-family: sans-serif;
+}
+
+.sidebar{
+    min-width: 200px;
+}
+.sidebar h1{
+   color: white;
+   width: 200px;
+}
+.sidebar ul {
+    list-style: none;
+}
+.sidebar a {
+    color: black !important;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -115,13 +139,13 @@ max-width: 900px;
 footer{
     display: flex;
     justify-content: space-between;
+    max-width: 900px;
     margin-top: 100px;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
-    padding-right: 150px;
-    padding-left: 100px;
+
 }
 footer img{
     max-width: 200px;
@@ -272,6 +296,7 @@ padding-bottom: 70px;
 .social-media-links{
     display: flex;
     justify-content: space-evenly;
+    min-width: 125px;
 }
 .social-media-links div{
     background-color: white; 
@@ -285,11 +310,9 @@ padding-bottom: 70px;
 }
 .social-media-links div svg{
     color: rgb(233, 89, 80);
-    font-size: 100%;
+    font-size: 20px;
 }
-.social-media-links div, span{
-    /* margin: 0 5px; */
-}
+
 
 /* drinks page css */
 .drinks-kv-container{
@@ -1105,3 +1128,4 @@ max-width: 500px;
     outline: none;
     border: none;
 }
+

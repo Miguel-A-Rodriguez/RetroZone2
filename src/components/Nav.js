@@ -2,14 +2,16 @@ import { faSearch, faShoppingCart } from '@fortawesome/fontawesome-free-solid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from "react-router-dom";
+import SideMenu from '../components/SideMenu';
 import Logo from "../images/Logo.png";
-
 // iframes used for facebook feeds and shopping cart
 const Nav = () => {
     return (
             <header>
                 <div className="kv-icons-wrapper">
+                  <SideMenu/>
                     <div className="header-kv-img-container">
+
                         <section>
                             <aside>
                                 <Link to="/"><span><img src={Logo} alt="Retro Zone Image" /></span></Link>
