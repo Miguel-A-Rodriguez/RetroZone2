@@ -5,25 +5,25 @@ import SideNav, { MenuIcon } from 'react-simple-sidenav';
 const SideMenu = (props) => {
   const [showNav, setShowNav] = useState();
   const navItems = [
-    <a href="GiftCard2">
+    <a href="/">
       HOME
     </a>,
-    <a href="someLink">
+    <a href="Pricing">
       PRICING
     </a>,
-    <a href="someLink">
+    <a href="Parties">
       PARTIES & RENTALS
     </a>,
-     <a href="someLink">
+     <a href="Drinks">
       DRINKS
      </a>,
-    <a href="someLink">
+    <a href="Events">
       EVENTS CALAENDER
     </a>,
-     <a href="someLink">
+     <a href="About">
       ABOUT US
     </a>,
-    <a href="someLink">
+    <a href="GiftCard2">
       GIFT CARDS
     </a>,
   ];
@@ -33,7 +33,7 @@ const SideMenu = (props) => {
   return (
     <div className="sidebar">
       <MenuIcon onClick={() => setShowNav(true)} />
-      <SideNav showNav={showNav} onHideNav={() => setShowNav(false)} title={title} items={navItems} itemStyle={{color: "black"}}/>
+      <SideNav showNav={showNav} onHideNav={() => setShowNav(false)} title={title} items={navItems} itemStyle={{color: "black"}} style={{width: "70vw"}} />
     </div>
   );
 }

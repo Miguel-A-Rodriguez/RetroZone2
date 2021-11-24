@@ -74,7 +74,7 @@ const settings = {
                   {photos.map((photo) => {
                     return(
                       <div>
-                        <img width="100%"  height="700px" src={photo.url}/>
+                        <img width="100%"  src={photo.url}/>
                       </div>
                       )
                   })}
