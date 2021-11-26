@@ -26,6 +26,7 @@ const SideMenu = (props) => {
     <a href="GiftCard2">
       GIFT CARDS
     </a>,
+    <p onClick={() => setShowNav(false)}>Close</p>
   ];
  
   const title = <h1> Navigation </h1>;
@@ -33,7 +34,8 @@ const SideMenu = (props) => {
   return (
     <div className="sidebar">
       <MenuIcon onClick={() => setShowNav(true)} />
-      <SideNav showNav={showNav} onHideNav={() => setShowNav(false)} title={title} items={navItems} itemStyle={{color: "black"}} style={{width: "70vw"}} />
+      <SideNav showNav={showNav} onHideNav={() => setShowNav(false)} title={title} items={navItems} itemStyle={{color: "black"}}  />
+      
     </div>
   );
 }

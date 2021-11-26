@@ -11,19 +11,7 @@
     font-family: sans-serif;
 }
 
-.sidebar{
-    min-width: 200px;
-}
-.sidebar h1{
-   color: white;
-   width: 200px;
-}
-.sidebar ul {
-    list-style: none;
-}
-.sidebar a {
-    color: black !important;
-}
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -1136,19 +1124,28 @@ ul{
 @media only screen and (max-width: 799px) {
     
     body{
-        padding: 2vw;
+        /* padding: 2vw; */
         margin: 0px;
     }
-    .sidebar{
-        max-width: 150px !important;
+    .sidebar h1{
+       color: white;
+       font-size: 2.8vw;
+       min-width: 150px;
+       text-align: center;
+    }
+    .sidebar ul {
+        list-style: none;
+    }
+    .sidebar a {
+        color: black !important;
     }
     .sidebar a{
         display: block;
-        font-size: 3.5vw;
+        font-size: 2vw;
     }
     .kv-container{
         width: 100vw;
-        height: 55vw;
+        height: 85vw;
         background-image: url("../images/home-kv-img.jpg");
         background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../images/home-kv-img.jpg");
         -webkit-background-size: cover;
@@ -1179,22 +1176,28 @@ ul{
     
     .kv-slider{
         margin: 0 auto;
-        max-width: 80vw;
+        max-width: 95vw;
         max-height: 80vw;
         margin-top: 30px;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
     }
     
     .kv-slider img{
         max-height: 80vw;
         max-width: 100%;
+        min-height: 450px;
     }
+    .slick-dots li button:before{
+        color: white;
+    }
+
     
     .bottom-info{
         display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
-    max-width: 900px;    
+        flex-direction: column;
+        margin: 0 auto;
+        justify-content: space-between;
+        max-width: 80vw;    
     }
     .bottom-info-box{
         display: flex;
@@ -1204,17 +1207,20 @@ ul{
         color: #eb05a2;
         padding: 0;
         margin: 0;
-        font-size: 1.7vw;
+        font-size: 2.9vw;
+        margin-bottom: 3vw;
+        margin-top: 18vw;
     }
     .bottom-info-box span{
         color: #c627e6;
         line-height: 1.5em;
-        font-size: 1.45vw;
+        font-size: 2.95vw;
     }
     .bottom-info-box p {
         color: #eb05a2;
         padding-top: 20px;
-        font-size: 1.8vw;
+        margin-bottom: 3vw;
+        font-size: 2.9vw;
         font-weight: 700;
     }
     

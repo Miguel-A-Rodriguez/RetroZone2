@@ -50,9 +50,9 @@ const settings = {
   cssEase: "linear",
   pauseOnHover: true,
   infinite: true,
-  speed: 500,
+  speed: 800,
   slidesToShow: 14,
-  arrows: true,
+  arrows: false,
   slidesToScroll: 1,
   className: "slides"
 };
