@@ -96,8 +96,8 @@ ul{
     }
     
     .kv-slider img{
-        max-height: 900px;
-        max-width: 9900px;
+        height: 600px;
+        max-width: 100%;
     }
     
     .bottom-info{
@@ -159,12 +159,12 @@ ul{
         background-size: cover;
         margin-top: 30px;
         margin-bottom: 60px;
-        font-size: 6em;
+        font-size: 8.48vw;
         color: #eb05a2;
     }
     .pricing-kv-container span{
-    padding-left: 130px;
-    padding-bottom: 70px;
+    padding-left: 10vw;
+    padding-bottom: 5.46vw;
       align-self: flex-end;
       white-space: pre-line;
     }
@@ -200,6 +200,7 @@ ul{
         margin-top: 100px;
         display: flex;
         justify-content: space-between;
+        padding: 0 2vw ;
     }
     .pricing-txt-bottom div{
         display: flex;
@@ -216,6 +217,9 @@ ul{
         font-size: 19px;
         word-break: break-word;
         max-width: 74ch;
+        display: flex;
+        align-items: center;
+        line-height: 2;
     }
     
     .party-kv-container{
@@ -1138,11 +1142,10 @@ ul{
     }
     .sidebar a {
         color: black !important;
-    }
-    .sidebar a{
         display: block;
         font-size: 2vw;
     }
+
     .kv-container{
         width: 100vw;
         height: 85vw;
@@ -1188,7 +1191,8 @@ ul{
         min-height: 450px;
     }
     .slick-dots li button:before{
-        color: white;
+        color: white ;
+        
     }
 
     
@@ -1228,17 +1232,17 @@ ul{
         display: flex;
         justify-content: space-between;
         max-width: 900px;
-        margin-top: 100px;
+        margin-top: 7.9vw;
         padding: 2vw;
         align-items: center;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 50px;
-        font-size: 2.75vw;
+        margin-bottom: 3.9vw;
+        font-size: 3vw;
     
     }
     footer img{
-        max-width: 20vw;
+        max-width: 29vw;
         max-height: 70px;
         width: 100%;
         height: auto;
@@ -1249,7 +1253,7 @@ ul{
         display: flex;
         justify-content: left;
         width: 100vw;
-        height: 40vw;
+        height: 50vw;
         background-image: url("../images/pricing-kv-img.jpg");
         background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../images/pricing-kv-img.jpg");
         -webkit-background-size: cover;
@@ -1258,12 +1262,12 @@ ul{
         background-size: cover;
         margin-top: 30px;
         margin-bottom: 60px;
-        font-size: 6em;
+        font-size: 11vw;
         color: #eb05a2;
     }
     .pricing-kv-container span{
-    padding-left: 130px;
-    padding-bottom: 70px;
+      padding-left: 10vw;
+      padding-bottom: 5.46vw;
       align-self: flex-end;
       white-space: pre-line;
     }
@@ -1272,6 +1276,8 @@ ul{
         max-width: 700px;
         margin: 0 auto;
         margin-bottom: 30px;
+        padding: 5vw;
+        padding-top: 0;
     }
     .pricing-kv-txt{
         color: #eb05a2;
@@ -1279,42 +1285,44 @@ ul{
         text-align: center;
     }
     .pricing-kv-txt h3{
-        font-size: 2em;
+        font-size: 4vw;
         margin: 10px 0;
     }
     .pricing-main-txt-container h4{
         color: #c627e6;
-        font-size: 2em;
+        font-size: 4vw;
         margin-bottom: 20px;
     }
     .pricing-main-txt-container p{
         color: white;
-     font-size: 1.5em;
+         font-size: 3vw;
     }
     .pricing-txt-bottom{
         max-width: 900px;
         display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
         margin: 0 auto;
         font-size: 1em;
-        margin-top: 100px;
-        display: flex;
-        justify-content: space-between;
+        margin-top: 7.5vw;
+        padding: 0 9vw;
+    
     }
     .pricing-txt-bottom div{
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
     }
     .pricing-txt-bottom span{
         color: #eb05a2;
-        font-size: 38px;
-        word-break: break-word;
-        max-width: 10ch;
+        font-size: 5.8vw;
+        margin-bottom: 3vw;
     }
     .pricing-txt-bottom p{
         color: #c627e6;
-        font-size: 19px;
-        word-break: break-word;
-        max-width: 74ch;
+        font-size: 4vw;
+        text-align: left;
+        line-height: 1.5;
     }
     
     .party-kv-container{

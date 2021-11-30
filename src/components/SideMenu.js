@@ -26,7 +26,7 @@ const SideMenu = (props) => {
     <a href="GiftCard2">
       GIFT CARDS
     </a>,
-    <p onClick={() => setShowNav(false)}>Close</p>
+    // <p onClick={() => setShowNav(false)}>Close</p>
   ];
  
   const title = <h1> Navigation </h1>;
