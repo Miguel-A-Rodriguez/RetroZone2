@@ -270,6 +270,7 @@ ul{
         margin-top: 50px;
         margin-left: auto;
         margin-right: auto;
+        padding: 0 2vw;
     }
     .party-txt ul{
         font-size: 18px;
@@ -1326,7 +1327,7 @@ ul{
     }
     
     .party-kv-container{
-        margin-top: 25px;
+        margin-top: 1vw;
         display: flex;
         align-items: center;
     }
@@ -1344,49 +1345,52 @@ ul{
         margin: 0;
     }
     .party-kv-container span{
-        margin-top: 25px;
+        
         display: flex;
         color: #eb05a2;
-        font-size: 3.5em;
+        font-size: 7vw;
         word-break: break-word;
         max-width: 15ch;
         text-transform: uppercase;
-        margin-left: 2.5rem;
+        margin-left: 1.75vw;
     }
     .party-txt-header{
         text-align: center;
-        font-size: 24px;
+        font-size: 5vw;
         max-width: 650px;
         margin: 40px auto;
+        padding: 0 1.5vw;
     }
     .party-txt-header span{
         color: #c627e6;
     }
     .party-txt-header p{
         margin-top: 30px;
-        margin-bottom: 8rem;
+        margin-bottom: 4vw;
     }
     .party-txt{
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         max-width: 900px;
         margin-top: 50px;
-        margin-left: auto;
-        margin-right: auto;
+        padding: 0 4vw;
     }
     .party-txt ul{
-        font-size: 18px;
+        font-size: 3vw;
         line-height: 30px;
+        padding-left: 2vw;
+        padding-top: 2vw;
     }
-    .party-txt ul li:nth-of-type(5){
+    /* .party-txt ul li:nth-of-type(5){
         margin-top: 25px;
-    }
+    } */
     .party-txt span{
         text-transform: uppercase;
         color: #c627e6;
         word-break: break-word;
         max-width: 10ch;
-        font-size: 35px;
+        font-size: 6vw;
     }
     
     
