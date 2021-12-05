@@ -34,7 +34,7 @@ const SideMenu = (props) => {
   return (
     <div className="sidebar">
       <MenuIcon onClick={() => setShowNav(true)} />
-      <SideNav showNav={showNav} onHideNav={() => setShowNav(false)} title={title} items={navItems} itemStyle={{color: "black"}}  />
+      <SideNav showNav={showNav} onHideNav={() => setShowNav(false)} title={title} items={navItems} itemStyle={{color: "black"}} navStyle={{maxWidth: "300px"}}  />
       
     </div>
   );

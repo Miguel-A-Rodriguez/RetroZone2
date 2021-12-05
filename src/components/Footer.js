@@ -29,7 +29,7 @@ const Footer = () => {
     return (
         <footer>
         <div> <Link to="/"><span><img src={Logo}alt="Retro Zone Image" /></span></Link> </div>
-           <div className=""><span>Copyright 2021</span></div>
+           <div className="copy-right"><span>Copyright 2021</span></div>
            <div className="social-media-links">
                
            <span onClick={notify}> <FontAwesomeIcon icon={faEnvelope} /> </span>
