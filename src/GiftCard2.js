@@ -194,7 +194,7 @@ console.log("Price:",price);
             </div>
             
             <form onSubmit={handleSubmit(onSubmit) } className="payment-container">
-              <label>EGIFT CARD AMOUNT</label>
+              <label className="giftcard-amount">EGIFT CARD AMOUNT</label>
               <section className="price-buttons">
                 <span className="list-items">
                   {priceItems.current.map(({index, item, itemSelect}, i) => (
@@ -234,7 +234,7 @@ console.log("Price:",price);
                 </>
                 )}
 
-              <label>PROMOTION CODE</label>
+              <label className="promotion-code">PROMOTION CODE</label>
                 <p style={promoCodeState === true ? {color: "green"} : {display: 'none'} }>Your Price is now {`$${discountedPrice}.00`}!</p>
                 <input
                     className="promo-code-input"
