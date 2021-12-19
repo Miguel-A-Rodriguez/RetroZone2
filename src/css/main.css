@@ -1209,7 +1209,7 @@ ul{
     .kv-slider img{
         max-height: 80vw;
         max-width: 100%;
-        min-height: 450px;
+        min-height: 80vw;
     }
     .slick-dots li button:before{
         color: white ;
@@ -2091,6 +2091,8 @@ ul{
         margin: 0 auto;
         display: flex;
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
         margin-top: 50px;
         padding-bottom: 50px;
     }
@@ -2354,7 +2356,7 @@ ul{
     .kv-slider img{
         max-height: 80vw;
         max-width: 100%;
-        min-height: 450px;
+        min-height: 80vw;
     }
     .slick-dots li button:before{
         color: white ;
@@ -3215,9 +3217,9 @@ ul{
     .checkout-container nav{
         max-width: 100vw;
     
-        display: grid;
+        /* display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-gap: 5px;
+        grid-gap: 5px; */
         text-align: center;
     
        
@@ -3252,12 +3254,12 @@ ul{
         margin-bottom: 10px;
     }
     .checkout-container .checkout-title h1{
-        font-size: 36px;
+        font-size: 10vw;
         font-weight: normal;
         color: #43494f;
     }
     .checkout-container .checkout-title h2{
-        font-size: 18px;
+        font-size: 5vw;
         font-weight: normal;
         color: #43494f;
     }
@@ -3266,15 +3268,18 @@ ul{
         width: 100%;
         margin: 0 auto;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
         margin-top: 50px;
         padding-bottom: 50px;
     }
     
     .checkout-content-container .stripe-js-content-container{
-    margin-right: 30px;
-    margin-top: 25px;
-    max-width: 500px;
+    /* margin-right: 30px; */
+        padding: 4vw;
+        margin-top: 25px;
+        max-width: 500px;
     }
     
     .digital-wallet-divder {
@@ -3307,6 +3312,7 @@ ul{
         .payment-warning p{
             margin-bottom: 30px;
             line-height: 24px;
+            font-size: 4vw;
         }
         .payment-warning b {
             color: #2996cc;
@@ -3335,11 +3341,12 @@ ul{
     /* order details  */
     .order-details__container{
        height: auto;
+       padding: 3vw 0;
     }
     .order-details__container .order-details__top-content{
         display: flex;
         justify-content: space-between;
-        min-width: 350px;
+        min-width: 300px;
     }
     .order-details__container .order-details__top-content b{
         font-weight: normal;
@@ -3353,7 +3360,7 @@ ul{
         letter-spacing: 0.05em;
     }
      .gift-card-payment-img-container {
-        max-width: 300px;
+        
         width: 100%;
         height: 200px;
         background-color: white;
@@ -3370,8 +3377,7 @@ ul{
     }
     .order-details__container .order-details__top-element-border{
         width: 100%;
-        max-width: 300px;
-        padding: 24px;
+        padding: 3vw;
         border: rgb(190, 190, 190) 1px solid;
         border-radius: 3px;
     }
@@ -3380,8 +3386,8 @@ ul{
         border: rgb(190, 190, 190) 1px solid;
         border-top: none;
         border-radius: 3px;
-        max-width: 300px;
-        padding: 24px;
+        
+        padding: 3vw;
         padding-top: 10px;
     }
     .order-details__container .price-date__flex{
@@ -3401,7 +3407,9 @@ ul{
         color: #777c81;
         
     }
-    
+    .payment-warning{
+        line-height: 1.5;
+    }
     .order-details__container .amount-pay__container{
         display: flex;
         justify-content: space-between;
@@ -3451,6 +3459,7 @@ ul{
     .auto-email-form label, input{
         margin-bottom: 10px;
     }
+    
     .auto-email-form input{
         min-height: 25px;
         border-radius: 5px;
@@ -3458,6 +3467,7 @@ ul{
     }
     .auto-email-form textarea{
         border-radius: 5px;
+    
         border: rgb(190, 190, 190) 1px solid;
     }
     .auto-email-form .hidden-input{

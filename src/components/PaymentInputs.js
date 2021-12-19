@@ -42,7 +42,7 @@ export default function PaymentInputs({cardNumber, setCardNumber, expiryDate, se
   
   return (
     <>
-    <PaymentInputsWrapper {...wrapperProps} >
+    <PaymentInputsWrapper {...wrapperProps} style={{maxWidth: "300px"}}>
       <svg {...getCardImageProps({ images })} />
       <input {...getCardNumberProps({onChange: handleCardNumber})} />
       <input {...getExpiryDateProps({onChange: handleExpiryNumber})} />
