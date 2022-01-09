@@ -724,8 +724,8 @@ ul{
     }
     .list-items div:nth-of-type(5){
         width: 100%;
-        padding-left: 35px;
-        border-right: none;
+        /* padding-left: 35px; */
+        /* border-right: none; */
     }
     .custom-button{
         border: 1px solid rgb(213, 217, 220);
@@ -1870,7 +1870,7 @@ ul{
     }
     .list-items div:nth-of-type(5){
         width: 100%;
-        padding-left: 35px;
+        /* padding-left: 35px; */
         
     }
     .custom-button{
@@ -2017,6 +2017,7 @@ ul{
         margin-bottom: 1vw;
         text-align: center;
         background-color: #006edce6;
+        border: none;
         color: white;
         font-weight: bolder;
         font-size: 16px;
@@ -3342,11 +3343,13 @@ ul{
     .order-details__container{
        height: auto;
        padding: 3vw 0;
+       padding-right: 5vw;
+       max-width: 260px;
     }
     .order-details__container .order-details__top-content{
         display: flex;
         justify-content: space-between;
-        min-width: 300px;
+        min-width: 282px;
     }
     .order-details__container .order-details__top-content b{
         font-weight: normal;
