@@ -1,31 +1,32 @@
 // With custom items
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import SideNav, { MenuIcon } from 'react-simple-sidenav';
- 
+
 const SideMenu = (props) => {
   const [showNav, setShowNav] = useState();
   const navItems = [
-    <a href="/">
+    <Link to="/">
       HOME
-    </a>,
-    <a href="Pricing">
+    </Link>,
+    <Link to="/Pricing">
       PRICING
-    </a>,
-    <a href="Parties">
+    </Link>,
+    <Link to="/Parties">
       PARTIES & RENTALS
-    </a>,
-     <a href="Drinks">
+    </Link>,
+     <Link to="/Drinks">
       DRINKS
-     </a>,
-    <a href="Events">
+     </Link>,
+    <Link to="/Events">
       EVENTS CALAENDER
-    </a>,
-     <a href="About">
+    </Link>,
+     <Link to="/About">
       ABOUT US
-    </a>,
-    <a href="GiftCard2">
+    </Link>,
+    <Link to="/GiftCard2">
       GIFT CARDS
-    </a>,
+    </Link>,
     // <p onClick={() => setShowNav(false)}>Close</p>
   ];
  
