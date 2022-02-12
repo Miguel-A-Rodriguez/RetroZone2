@@ -439,7 +439,7 @@ ul{
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 110vw;
+        /* width: 110vw; */
         margin: 0 auto;
     }
     
